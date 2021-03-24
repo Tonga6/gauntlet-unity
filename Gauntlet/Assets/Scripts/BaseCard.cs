@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BaseCard : MonoBehaviour
+public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
     public int manaCost;
 	public new string name;
 	public string description;
 	public bool isMoving;
 	public Sprite artwork;
-
-	//public CardData cardData;
-
+    public CanvasGroup cs;
+    Vector2 startPos;
 
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
@@ -24,19 +24,29 @@ public class BaseCard : MonoBehaviour
         }
     }
 
-    private void Update()
+    #region IBeginDragHandler implementation
+    public void OnBeginDrag(PointerEventData eventData)
     {
-		if (isMoving)
-			Move();
+        startPos = GetComponent<RectTransform>().localPosition;
+        cs.blocksRaycasts = false;
     }
-	public void SetMoving(bool isMouseDown)
+    #endregion
+
+    #region IDragHandler implementation
+    public void OnDrag(PointerEventData eventData)
     {
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
-		    isMoving = isMouseDown;
+        transform.position = Input.mousePosition;
     }
-    public void Move()
+    #endregion
+
+    #region IEndDragHandler implementation
+
+    public void OnEndDrag(PointerEventData eventData)
     {
-		this.transform.position = Input.mousePosition;
+        //GetComponent<RectTransform>().localPosition = startPos;
+        cs.blocksRaycasts = true;
     }
+    #endregion
+
 }
 
