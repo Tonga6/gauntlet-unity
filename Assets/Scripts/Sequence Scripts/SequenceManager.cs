@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SequenceManager : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class SequenceManager : MonoBehaviour
 
     private void Awake()
     {
-            slots[0].gameObject.SetActive(true);
-        
+        for (int i = 1; i < slots.Count; i++)
+        {
+            slots[i].gameObject.GetComponent<SequenceSlot>().enabled = false;
+            Image tempImage = slots[i].gameObject.GetComponent<Image>();
+            Color temp = tempImage.color;
+            temp.a = temp.a/2;
+            slots[i].gameObject.GetComponent<Image>().color = temp;
+        }
+            //slots[0].gameObject.GetComponent<SequenceSlot>().enabled = true;
     }
     public void ActivateCards()
     {
@@ -50,7 +58,14 @@ public class SequenceManager : MonoBehaviour
     {
         cards.Add(card);
         //Set next sequence slot active
-        if (cards.Count < slots.Count)    
-            slots[cards.Count].gameObject.SetActive(true);
+        if (cards.Count < slots.Count)
+        {
+
+            slots[cards.Count].gameObject.GetComponent<SequenceSlot>().enabled = true;
+            Image tempImage = slots[cards.Count].gameObject.GetComponent<Image>();
+            Color temp = tempImage.color;
+            temp.a = 255;
+            slots[cards.Count].gameObject.GetComponent<Image>().color = temp;
+        }   
     }
 }

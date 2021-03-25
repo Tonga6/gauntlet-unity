@@ -41,7 +41,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: 2}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814104785012227230
 MonoBehaviour:
@@ -58,10 +58,13 @@ MonoBehaviour:
   manaCost: 0
   name: 
   description: 
-  cardType: 0
+  cardType: 1
   isMoving: 0
   artwork: {fileID: 0}
   cs: {fileID: 309500972}
+  magnify: 2
+  adjust: 80
+  canvas: {fileID: 0}
   cardEffects:
   - {fileID: 1530611443}
 --- !u!114 &1530611443

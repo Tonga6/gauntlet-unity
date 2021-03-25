@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Card Details")]
     public int manaCost;
@@ -15,7 +15,10 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     [Header("Card Visuals")]
     public Sprite artwork;
     public CanvasGroup cs;
-    Vector2 startPos;
+
+    public int magnify;
+    public int adjust;
+    public Canvas canvas;
 
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
@@ -31,27 +34,48 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         }
     }
 
-    #region IBeginDragHandler implementation
+    #region IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPos = GetComponent<RectTransform>().localPosition;
         cs.blocksRaycasts = false;
     }
     #endregion
 
-    #region IDragHandler implementation
+    #region IDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
     }
     #endregion
 
-    #region IEndDragHandler implementation
+    #region IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
         //GetComponent<RectTransform>().localPosition = startPos;
         cs.blocksRaycasts = true;
+    }
+    #endregion
+
+    #region OnPointerEnter
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        this.transform.localScale *= magnify;
+        Vector2 temp = transform.position;
+        temp.y += adjust;
+        transform.position = temp;
+        //canvas.overrideSorting = true;
+    }
+    #endregion
+
+    #region OnPointerExit
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("Pointer exit");
+        Vector2 temp = transform.position;
+        temp.y -= adjust;
+        transform.position = temp;
+        this.transform.localScale = Vector3.one;
     }
     #endregion
 
