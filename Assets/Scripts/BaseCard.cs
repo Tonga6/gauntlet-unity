@@ -16,9 +16,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     public Sprite artwork;
     public CanvasGroup cs;
 
-    public int magnify;
-    public int adjust;
     public Canvas canvas;
+    public bool isPlayed = false;
 
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
@@ -60,22 +59,30 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.transform.localScale *= magnify;
-        Vector2 temp = transform.position;
-        temp.y += adjust;
-        transform.position = temp;
-        //canvas.overrideSorting = true;
+        this.transform.localScale *= GameManager.Instance.magScale;
+       
+        
+        canvas.overrideSorting = true;
+        if (!isPlayed){
+            Vector2 temp = transform.position;
+            temp.y += GameManager.Instance.adjustVar;
+            transform.position = temp;
+        }
     }
     #endregion
 
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Pointer exit");
-        Vector2 temp = transform.position;
-        temp.y -= adjust;
-        transform.position = temp;
+        
         this.transform.localScale = Vector3.one;
+        canvas.overrideSorting = false;
+        if (!isPlayed)
+        {
+            Vector2 temp = transform.position;
+            temp.y -= GameManager.Instance.adjustVar;
+            transform.position = temp;
+        }
     }
     #endregion
 

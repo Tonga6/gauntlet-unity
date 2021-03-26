@@ -8,6 +8,7 @@ public class SequenceManager : MonoBehaviour
     public List<SequenceSlot> slots = new List<SequenceSlot>();
     public List<GameObject> cards = new List<GameObject>();
 
+
     private void Awake()
     {
         for (int i = 1; i < slots.Count; i++)
@@ -67,5 +68,20 @@ public class SequenceManager : MonoBehaviour
             temp.a = 255;
             slots[cards.Count].gameObject.GetComponent<Image>().color = temp;
         }   
+    }
+
+    public void ClearSequence()
+    {
+        Debug.Log(cards.Count);
+        foreach (SequenceSlot slot in slots)
+        {
+            slot.card = null;
+        }
+        foreach (GameObject card in cards)
+        {
+            card.SetActive(false);
+            PlayerManager.Instance.discardPile.Push(card);
+        }
+        cards.Clear();
     }
 }

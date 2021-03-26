@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CardPile : MonoBehaviour
 {
     
-    public GameObject handZone;
+    //public GameObject handZone;
     [SerializeField]
-    List<GameObject> cards = new List<GameObject>();
+    public List<GameObject> cards = new List<GameObject>();
+    public bool isDrawPile = false;
+
+    public TextMeshProUGUI text;
     private void Awake()
     {
-        ShufflePile();
+        if(GameManager.Instance != null)
+        {
+            ShufflePile();
+        }
     }
     public void ShufflePile()
     {
@@ -24,14 +32,25 @@ public class CardPile : MonoBehaviour
     }
     public GameObject Pop()
     {
-        Debug.Log("Pop, not empty");
         if (!IsEmpty())
         {
-            GameObject temp = cards[cards.Count-1];
+            GameObject temp = cards[cards.Count - 1];
             cards.RemoveAt(cards.Count - 1);
+
+            temp.SetActive(true);
+            UpdateCount();
             return temp;
         }
         return null;
+    }
+
+    public void Push(GameObject card)
+    {
+        cards.Add(card);
+        card.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
+
+        card.SetActive(false);
+        UpdateCount();
     }
 
     public bool IsEmpty()
@@ -39,5 +58,18 @@ public class CardPile : MonoBehaviour
         if (cards.Count == 0)
             return true;
         return false;
+    }
+    void UpdateCount()
+    {
+        text.text = cards.Count.ToString();
+    }
+    public void Populate(List<GameObject> cards)
+    {
+        Debug.Log(cards.Count);
+        foreach (GameObject card in cards)
+        {
+            Push(Instantiate(card, this.transform));
+
+        }
     }
 }

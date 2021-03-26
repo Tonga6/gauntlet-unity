@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance { get; private set; }
+
+    public SequenceManager sm;
+
     public CardPile drawPile;
     public CardPile discardPile;
 
-    public GameObject handZone;
+    public HandManager hm;
 
     public int maxHandSize;
     public int handSize;
@@ -15,18 +19,40 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        while(handSize < maxHandSize && !drawPile.IsEmpty()) { 
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+        RefillHand();
+        
+    }
+    public void RefillHand()
+    {
+        while (handSize < maxHandSize && !drawPile.IsEmpty())
+        {
             DrawCard();
         }
     }
-
+    public void RefillDrawPile()
+    {
+       while (!discardPile.IsEmpty())
+        {
+            drawPile.Push(discardPile.Pop());
+        }
+    }
     public void DrawCard()
     {
-        GameObject temp = Instantiate(drawPile.Pop(),drawPile.transform);
-        temp.GetComponent<RectTransform>().parent = handZone.GetComponent<RectTransform>();
-        //temp.GetComponent<BaseCard>().AnimateToParent(handZone.GetComponent<RectTransform>());    //attempt to animate movement
+        GameObject temp = drawPile.Pop();
+        temp.SetActive(true);
+        hm.AddToHand(temp);
+        
         handSize++;
     }
 
-    
+
+    public void ClearBoard()
+    {
+        sm.ClearSequence();
+    }
 }
+

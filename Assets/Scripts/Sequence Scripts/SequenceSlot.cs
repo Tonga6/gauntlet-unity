@@ -14,8 +14,9 @@ public class SequenceSlot : MonoBehaviour, IDropHandler
     {
         if (data != null)
         {
+            PlayerManager.Instance.handSize--;
             data.pointerDrag.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
-
+            data.pointerDrag.GetComponent<BaseCard>().isPlayed = true;
             data.pointerDrag.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
             card = data.selectedObject;
             sm.NewCard(card);
