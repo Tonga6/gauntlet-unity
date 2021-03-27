@@ -55,12 +55,7 @@ public class GameManager : MonoBehaviour
 
     void StartPhase()
     {
-        //Refill draw pile if empty
-        if (PlayerManager.Instance.drawPile.IsEmpty())
-            PlayerManager.Instance.RefillDrawPile();
-
-        //Refill hand
-        PlayerManager.Instance.RefillHand();
+        PlayerManager.Instance.StartPhase();
     }
     void EndPhase()
     {

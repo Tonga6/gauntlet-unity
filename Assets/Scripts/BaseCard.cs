@@ -21,6 +21,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
+    public Vector2 startPos;
     public void ActivateEffects()
     {
         foreach (CardEffect effect in cardEffects)
@@ -33,10 +34,21 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         }
     }
 
+    public void ResetPos()
+    {
+        transform.localPosition = startPos;
+    }
+
     #region IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
         cs.blocksRaycasts = false;
+
+        Vector2 temp = transform.position;
+        temp.y -= GameManager.Instance.adjustVar;
+        transform.position = temp;
+
+        startPos = transform.localPosition;
     }
     #endregion
 
@@ -53,6 +65,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     {
         //GetComponent<RectTransform>().localPosition = startPos;
         cs.blocksRaycasts = true;
+        if (!isPlayed)
+            ResetPos();
     }
     #endregion
 

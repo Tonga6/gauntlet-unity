@@ -6,12 +6,17 @@ using TMPro;
 
 public class PlayerManager : CharacterManager
 {
+    public static PlayerManager Instance { get; private set; }
 
     [Header("Player Text Displays")]
     public TextMeshProUGUI manaText;
     public TextMeshProUGUI handSizeText;
-    public static PlayerManager Instance { get; private set; }
 
+    [Header("Player Attributes")]
+    public int maxMana;
+    public int currMana;
+
+    [Header("Player Card Systems")]
     public CardPile drawPile;
     public CardPile discardPile;
 
@@ -26,6 +31,7 @@ public class PlayerManager : CharacterManager
         {
             Instance = this;
             Initialise();
+            currMana = maxMana;
         }
         else
             Destroy(this);
@@ -54,8 +60,31 @@ public class PlayerManager : CharacterManager
         
         handSize++;
     }
+    public bool PlayCard(GameObject card)
+    {
+        Debug.Log(currMana + " " + card.GetComponent<BaseCard>().manaCost);
 
+        if (currMana >= card.GetComponent<BaseCard>().manaCost)
+        {
+            Debug.Log("can play card");
+            handSize--;
+            currMana -= card.GetComponent<BaseCard>().manaCost;
+            manaText.text = currMana.ToString();
+            card.GetComponent<BaseCard>().ActivateEffects();
+            return true;
+        }
+        return false;
+    }
+    public void StartPhase()
+    {
+        currMana = maxMana;
+        manaText.text = currMana.ToString();
 
+        if (drawPile.IsEmpty())
+            RefillDrawPile();
+
+        RefillHand();
+    }
     public void ClearBoard()
     {
         sm.ClearSequence();

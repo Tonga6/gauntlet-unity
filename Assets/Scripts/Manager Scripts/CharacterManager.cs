@@ -13,7 +13,6 @@ public class CharacterManager : MonoBehaviour
     [Header("Character Attributes")]
     public int health;
     public int shield;
-    public int mana;
 
     [Header("Hand Attributes")]
     public int maxHandSize;
