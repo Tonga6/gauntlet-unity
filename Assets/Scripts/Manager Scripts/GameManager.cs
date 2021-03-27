@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemyCards;
     public CardPile enemyDrawPile;
 
-    public int magScale;
+    public float magScale;
     public int adjustVar;
-    
+    public int sunkVar;
+    public Vector3 cardScale;
+
     public turnPhase phase;
 
     private void Awake()
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
                 StartPhase();
                 break;
             case (turnPhase.ENEMY):
-                EndPhase();
+                EnemyPhase();
                 break;
             case (turnPhase.PLAYER):
                 break;

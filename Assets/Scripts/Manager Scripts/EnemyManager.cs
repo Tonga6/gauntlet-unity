@@ -15,7 +15,11 @@ public class EnemyManager : CharacterManager
         }
         else
             Destroy(this);
-        //RefillHand();
+
+    }
+
+    public void EnemyAction()
+    {
 
     }
 }

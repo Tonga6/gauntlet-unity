@@ -106,7 +106,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     public void OnPointerExit(PointerEventData eventData)
     {
         
-        this.transform.localScale = Vector3.one;
+        this.transform.localScale = GameManager.Instance.cardScale;
         canvas.overrideSorting = false;
         if (!isPlayed)
         {

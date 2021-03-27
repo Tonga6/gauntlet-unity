@@ -406,8 +406,10 @@ MonoBehaviour:
   playerDrawPile: {fileID: 56747362}
   enemyCards: []
   enemyDrawPile: {fileID: 0}
-  magScale: 2
-  adjustVar: 80
+  magScale: 1.8
+  adjustVar: 200
+  sunkVar: 100
+  cardScale: {x: 1.4, y: 1.4, z: 0}
   phase: 0
 --- !u!4 &106939457
 Transform:
@@ -599,7 +601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &194952479 stripped
 RectTransform:
@@ -6361,58 +6363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: []
---- !u!1 &2008180354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2008180356}
-  - component: {fileID: 2008180355}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2008180355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008180354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a63e49dc82b32428af22610c5117c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
-  shieldText: {fileID: 0}
-  maxHealth: 0
-  health: 0
-  maxShield: 0
-  shield: 0
-  maxHandSize: 0
-  handSize: 0
-  sm: {fileID: 0}
---- !u!4 &2008180356
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008180354}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 913.6549, y: 499.90515, z: -2730.1787}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4416791606644610797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6534,6 +6484,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 597458888}
     m_Modifications:
     - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
+      propertyPath: m_ChildScaleHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_ChildControlWidth
       value: 0
       objectReference: {fileID: 0}
@@ -6547,7 +6505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_ChildForceExpandHeight
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751840, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_Pivot.x
