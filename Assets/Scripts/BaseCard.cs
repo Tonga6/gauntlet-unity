@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler, IPointerEnterHandler, IPointerExitHandler
@@ -13,6 +15,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 	public bool isMoving;
 
     [Header("Card Visuals")]
+    public TextMeshProUGUI nameText;
     public Sprite artwork;
     public CanvasGroup cs;
 
@@ -22,6 +25,12 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     public List<CardEffect> cardEffects = new List<CardEffect>();
 
     public Vector2 startPos;
+    
+    private void Awake()
+    {
+        nameText.text = name;
+        nameText.fontSize = 8;
+    }
     public void ActivateEffects()
     {
         foreach (CardEffect effect in cardEffects)

@@ -36,6 +36,10 @@ PrefabInstance:
       value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: name
+      value: Attack 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardType
       value: 0
       objectReference: {fileID: 0}
@@ -43,6 +47,10 @@ PrefabInstance:
       propertyPath: manaCost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: nameText
+      value: 
+      objectReference: {fileID: 3494233404762112929}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardEffects.Array.data[0]
       value: 
@@ -142,3 +150,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
   m_PrefabInstance: {fileID: 4622163181455702866}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3494233404762112929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+  m_PrefabInstance: {fileID: 4622163181455702866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

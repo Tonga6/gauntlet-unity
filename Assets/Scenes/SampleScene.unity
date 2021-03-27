@@ -407,7 +407,7 @@ MonoBehaviour:
   enemyCards: []
   enemyDrawPile: {fileID: 0}
   magScale: 1.8
-  adjustVar: 200
+  adjustVar: 180
   sunkVar: 100
   cardScale: {x: 1.4, y: 1.4, z: 0}
   phase: 0
@@ -6488,8 +6488,12 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_ChildScaleHeight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751768, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_ChildControlWidth

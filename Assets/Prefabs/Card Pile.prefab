@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4fee1d18574374f8cf06e4465608fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handZone: {fileID: 0}
   cards:
   - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
   - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
@@ -197,6 +196,7 @@ MonoBehaviour:
   - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
   - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
   - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
+  isDrawPile: 0
   text: {fileID: 0}
 --- !u!222 &8195444250518870534
 CanvasRenderer:
