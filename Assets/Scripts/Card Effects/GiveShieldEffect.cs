@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DealDamageEffect : CardEffect
+public class GiveShieldEffect : CardEffect
 {
-    public int damage = 5;
+    public int shield;
 
     public override void ActivateEffect()
     {
         Debug.Log("Activated Effect: " + this.gameObject.name);
-        EffectManager.Instance.DealDamage(target, damage);
+        EffectManager.Instance.GiveShield(target, shield);
     }
 }

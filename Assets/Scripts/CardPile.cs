@@ -13,13 +13,7 @@ public class CardPile : MonoBehaviour
     public bool isDrawPile = false;
 
     public TextMeshProUGUI text;
-    private void Awake()
-    {
-        if(GameManager.Instance != null)
-        {
-            ShufflePile();
-        }
-    }
+
     public void ShufflePile()
     {
         for (int i = 0; i < cards.Count; i++)
@@ -65,11 +59,10 @@ public class CardPile : MonoBehaviour
     }
     public void Populate(List<GameObject> cards)
     {
-        Debug.Log(cards.Count);
         foreach (GameObject card in cards)
         {
             Push(Instantiate(card, this.transform));
-
         }
+        ShufflePile();
     }
 }

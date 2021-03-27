@@ -6,6 +6,8 @@ public abstract class CardEffect : MonoBehaviour
 {
     public bool hasActivated;
 
+    public targetCharacter target;
+
     public EffectCondition condition;
     private void Awake()
     {
@@ -13,7 +15,6 @@ public abstract class CardEffect : MonoBehaviour
     }
     public virtual bool CanActivate()
     {
-        Debug.Log("Check Effect CanActivate");
         if (condition == null)
             if (!hasActivated)
                 return true;
@@ -22,7 +23,6 @@ public abstract class CardEffect : MonoBehaviour
         {
             return true;
         }
-        Debug.Log("CanActivate returned false");
 
         return false;
     }

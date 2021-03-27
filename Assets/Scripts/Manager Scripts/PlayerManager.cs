@@ -1,26 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : CharacterManager
 {
-    public static PlayerManager Instance { get; private set; }
 
-    public SequenceManager sm;
+    [Header("Player Text Displays")]
+    public TextMeshProUGUI manaText;
+    public TextMeshProUGUI handSizeText;
+    public static PlayerManager Instance { get; private set; }
 
     public CardPile drawPile;
     public CardPile discardPile;
 
     public HandManager hm;
 
-    public int maxHandSize;
-    public int handSize;
+    
     List<GameObject> playerHand;
 
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            Initialise();
+        }
         else
             Destroy(this);
         RefillHand();

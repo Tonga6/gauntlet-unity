@@ -11,14 +11,7 @@ public class SequenceManager : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 1; i < slots.Count; i++)
-        {
-            slots[i].gameObject.GetComponent<SequenceSlot>().enabled = false;
-            Image tempImage = slots[i].gameObject.GetComponent<Image>();
-            Color temp = tempImage.color;
-            temp.a = temp.a/2;
-            slots[i].gameObject.GetComponent<Image>().color = temp;
-        }
+        ClearSequence();
             //slots[0].gameObject.GetComponent<SequenceSlot>().enabled = true;
     }
     public void ActivateCards()
@@ -41,8 +34,6 @@ public class SequenceManager : MonoBehaviour
         int i = pivot + inc;
         for (int j = 0; (i < cards.Count && i >= 0) && adjacency != 0;j++)
         {
-            Debug.Log("Card played at: " + pivot);
-            Debug.Log("Card at: " + i + " has type: " + cards[i].GetComponent<BaseCard>().cardType);
             if (cards[i].GetComponent<BaseCard>().cardType != typeCombo[j])
                 return false;
 
@@ -61,22 +52,29 @@ public class SequenceManager : MonoBehaviour
         //Set next sequence slot active
         if (cards.Count < slots.Count)
         {
-
             slots[cards.Count].gameObject.GetComponent<SequenceSlot>().enabled = true;
             Image tempImage = slots[cards.Count].gameObject.GetComponent<Image>();
             Color temp = tempImage.color;
-            temp.a = 255;
+            temp.a = 1;
             slots[cards.Count].gameObject.GetComponent<Image>().color = temp;
         }   
     }
 
     public void ClearSequence()
     {
-        Debug.Log(cards.Count);
-        foreach (SequenceSlot slot in slots)
+        //set slots inactive and slot reference to card null
+        for (int i = 1; i < slots.Count; i++)
         {
-            slot.card = null;
+            slots[i].card = null;
+            slots[i].gameObject.GetComponent<SequenceSlot>().enabled = false;
+
+            //Set transparency to half
+            Image tempImage = slots[i].gameObject.GetComponent<Image>();
+            Color temp = tempImage.color;
+            temp.a = 0.5f;
+            slots[i].gameObject.GetComponent<Image>().color = temp;
         }
+        //set card inactive whil in card pile
         foreach (GameObject card in cards)
         {
             card.SetActive(false);

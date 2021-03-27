@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6873179372321630651}
   - component: {fileID: 1814104785012227230}
-  - component: {fileID: 1530611443}
-  - component: {fileID: 1530611442}
   - component: {fileID: 1530611448}
   - component: {fileID: 1530611445}
   - component: {fileID: 1530611446}
@@ -42,8 +40,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 2}
-  m_SizeDelta: {x: 50, y: 70}
+  m_AnchoredPosition: {x: 26.2, y: 33}
+  m_SizeDelta: {x: 94.27405, y: 131.98366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814104785012227230
 MonoBehaviour:
@@ -60,44 +58,14 @@ MonoBehaviour:
   manaCost: 0
   name: 
   description: 
-  cardType: 1
+  cardType: 0
   isMoving: 0
   artwork: {fileID: 0}
   cs: {fileID: 309500972}
   canvas: {fileID: 5747240276497365444}
   isPlayed: 0
   cardEffects:
-  - {fileID: 1530611443}
---- !u!114 &1530611443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203065054558239359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9116b146bff8a6a41abe2fd33645b89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasActivated: 1
-  condition: {fileID: 1530611442}
-  damage: 5
---- !u!114 &1530611442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203065054558239359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580cea2207f583d409a0e8a0a1db77d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sm: {fileID: 0}
-  adjacency: -1
-  typeCombo: 00000000
+  - {fileID: 0}
 --- !u!222 &1530611448
 CanvasRenderer:
   m_ObjectHideFlags: 0

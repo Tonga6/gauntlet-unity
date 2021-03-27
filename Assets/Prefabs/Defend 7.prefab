@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4773332841691968288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825173427667288365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f222616333ae06e4eafa82d456e3d74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  target: 0
+  condition: {fileID: 0}
+  shield: 7
 --- !u!1001 &4622163181455702866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +23,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1530611442, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: typeCombo.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1530611443, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: damage
       value: 10
@@ -23,9 +43,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.40650588
       objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: cardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: cardEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 4773332841691968288}
     - target: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Name
-      value: Defend 10
+      value: Defend 7
       objectReference: {fileID: 0}
     - target: {fileID: 6873179372321630651, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Pivot.x
@@ -111,5 +139,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1530611443, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+--- !u!1 &6825173427667288365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+  m_PrefabInstance: {fileID: 4622163181455702866}
+  m_PrefabAsset: {fileID: 0}

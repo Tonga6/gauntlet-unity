@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        Debug.Log("populate");
         playerDrawPile.Populate(playerCards);
     }
 
@@ -56,7 +55,6 @@ public class GameManager : MonoBehaviour
 
     void StartPhase()
     {
-        Debug.Log("Start Phase");
         //Refill draw pile if empty
         if (PlayerManager.Instance.drawPile.IsEmpty())
             PlayerManager.Instance.RefillDrawPile();
