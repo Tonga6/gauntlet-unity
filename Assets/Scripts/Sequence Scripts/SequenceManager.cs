@@ -77,7 +77,7 @@ public class SequenceManager : MonoBehaviour
         //set card inactive whil in card pile
         foreach (GameObject card in cards)
         {
-            card.SetActive(false);
+            card.GetComponent<BaseCard>().ResetCard();
             PlayerManager.Instance.discardPile.Push(card);
         }
         cards.Clear();

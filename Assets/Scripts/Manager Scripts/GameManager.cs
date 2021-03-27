@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int magScale;
     public int adjustVar;
     
-    turnPhase phase;
+    public turnPhase phase;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         playerDrawPile.Populate(playerCards);
+        NextPhase();
     }
 
     public void NextPhase()
@@ -35,13 +36,14 @@ public class GameManager : MonoBehaviour
 
         else
             phase++;
-
+        Debug.Log("Next Phase: " + phase);
         switch (phase) // use upcast, where 0 - first, 1 - second...
         {
             case (turnPhase.START):
                 StartPhase();
                 break;
             case (turnPhase.ENEMY):
+                EndPhase();
                 break;
             case (turnPhase.PLAYER):
                 break;
@@ -56,10 +58,15 @@ public class GameManager : MonoBehaviour
     void StartPhase()
     {
         PlayerManager.Instance.StartPhase();
+        NextPhase();
+    }
+    void EnemyPhase()
+    {
     }
     void EndPhase()
     {
         PlayerManager.Instance.ClearBoard();
+        NextPhase();
     }
 }
 

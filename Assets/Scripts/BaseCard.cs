@@ -33,6 +33,15 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
             }
         }
     }
+    public void ResetCard()
+    {
+        foreach (CardEffect effect in cardEffects)
+        {
+            effect.hasActivated = false;
+        }
+        isPlayed = false;
+        gameObject.SetActive(false);
+    }
 
     public void ResetPos()
     {
@@ -42,20 +51,25 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region IBeginDragHandler
     public void OnBeginDrag(PointerEventData eventData)
     {
-        cs.blocksRaycasts = false;
+        if(GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
+        {
+            isMoving = true;
+            cs.blocksRaycasts = false;
 
-        Vector2 temp = transform.position;
-        temp.y -= GameManager.Instance.adjustVar;
-        transform.position = temp;
+            Vector2 temp = transform.position;
+            temp.y -= GameManager.Instance.adjustVar;
+            transform.position = temp;
 
-        startPos = transform.localPosition;
+            startPos = transform.localPosition;
+        }
     }
     #endregion
 
     #region IDragHandler
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        if (isMoving && !isPlayed)
+            transform.position = Input.mousePosition;
     }
     #endregion
 
@@ -63,10 +77,13 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //GetComponent<RectTransform>().localPosition = startPos;
-        cs.blocksRaycasts = true;
-        if (!isPlayed)
-            ResetPos();
+        if (isMoving && !isPlayed)
+        {
+            isMoving = false;
+            cs.blocksRaycasts = true;
+            if (!isPlayed)
+                ResetPos();
+        }
     }
     #endregion
 
