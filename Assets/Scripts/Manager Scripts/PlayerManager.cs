@@ -62,11 +62,9 @@ public class PlayerManager : CharacterManager
     }
     public bool PlayCard(GameObject card)
     {
-        Debug.Log(currMana + " " + card.GetComponent<BaseCard>().manaCost);
 
         if (currMana >= card.GetComponent<BaseCard>().manaCost)
         {
-            Debug.Log("can play card");
             handSize--;
             currMana -= card.GetComponent<BaseCard>().manaCost;
             manaText.text = currMana.ToString();

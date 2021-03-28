@@ -6,11 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("Player Deck Setup")]
     public List<GameObject> playerCards;
     public CardPile playerDrawPile;
 
-    public List<GameObject> enemyCards;
-    public CardPile enemyDrawPile;
+    [Header("Enemy Deck Setup")]
+    public List<GameObject> enemyActionCards;
+    public CardPile enemyActionDrawPile;
+    public List<GameObject> enemyReactionCards;
+    public CardPile enemyReactionDrawPile;
 
     public bool canMag;
     public int adjustVar;
@@ -29,7 +33,8 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         playerDrawPile.Populate(playerCards);
-        NextPhase();
+        enemyActionDrawPile.Populate(enemyActionCards);
+        StartPhase();
     }
 
     public void NextPhase()
@@ -61,10 +66,11 @@ public class GameManager : MonoBehaviour
     void StartPhase()
     {
         PlayerManager.Instance.StartPhase();
-        NextPhase();
+        //NextPhase();
     }
     void EnemyPhase()
     {
+        EnemyManager.Instance.EnemyAction();
     }
     void EndPhase()
     {

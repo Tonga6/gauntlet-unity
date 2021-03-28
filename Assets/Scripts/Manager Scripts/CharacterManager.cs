@@ -31,15 +31,22 @@ public class CharacterManager : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
-        health -= damage;
+        Debug.Log("Dealing " + damage + " damage");
+        if (damage > shield)
+        {
+            health -= damage - shield;
+            shield = 0;
+        }
+        else
+            shield -= damage;
         healthText.text = health.ToString();
+        shieldText.text = shield.ToString();
     }
     public void GiveShield(int bonus)
     {
-        Debug.Log("Give: " + shield + " shield to: " + this.gameObject.name);
+
         this.shield += bonus;
         shieldText.text = shield.ToString();
-        Debug.Log(shield + this.gameObject.name);
 
     }
 }

@@ -19,13 +19,12 @@ public class EffectManager : MonoBehaviour
         {
             Instance.targets.Add(PlayerManager.Instance);
             Instance.targets.Add(EnemyManager.Instance);
-            Debug.Log(targets.ToString());
         }
     }
 
     public void DealDamage(targetCharacter target, int damage)
     {
-        Debug.Log("Deal Damage called to target");
+        Debug.Log("Deal Damage called to target: " + target);
         if (target == targetCharacter.ENEMY)
         {
             EnemyManager.Instance.TakeDamage(damage);
@@ -35,7 +34,6 @@ public class EffectManager : MonoBehaviour
     }
     public void GiveShield(targetCharacter target, int shield)
     {
-        Debug.Log("Give Shield called to target");
         if (target == targetCharacter.ENEMY)
         {
             EnemyManager.Instance.GiveShield(shield);

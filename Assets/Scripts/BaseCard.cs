@@ -88,13 +88,16 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-            GameManager.Instance.canMag = true;
-        if (isMoving && !isPlayed)
+        GameManager.Instance.canMag = true;
+        if (GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
         {
-            isMoving = false;
-            cs.blocksRaycasts = true;
-            if (!isPlayed)
-                ResetPos();
+            if (isMoving)
+            {
+                isMoving = false;
+                cs.blocksRaycasts = true;
+                if (!isPlayed)
+                    ResetPos();
+            }
         }
     }
     #endregion

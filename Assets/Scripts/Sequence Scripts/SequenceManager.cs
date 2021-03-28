@@ -49,6 +49,11 @@ public class SequenceManager : MonoBehaviour
     public void NewCard(GameObject card)
     {
         cards.Add(card);
+
+        card.GetComponent<RectTransform>().parent = slots[cards.Count-1].GetComponent<RectTransform>();
+        card.GetComponent<BaseCard>().isPlayed = true;
+        card.transform.position = slots[cards.Count - 1].transform.position;
+
         //Set next sequence slot active
         if (cards.Count < slots.Count)
         {

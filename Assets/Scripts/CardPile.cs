@@ -42,7 +42,7 @@ public class CardPile : MonoBehaviour
     {
         cards.Add(card);
         card.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
-
+        card.GetComponent<CardEffect>().hasActivated = false;
         card.SetActive(false);
         UpdateCount();
     }
