@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemyCards;
     public CardPile enemyDrawPile;
 
-    public float magScale;
+    public bool canMag;
     public int adjustVar;
     public int sunkVar;
+    public Vector3 magScale;
     public Vector3 cardScale;
 
     public turnPhase phase;

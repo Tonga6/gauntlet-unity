@@ -62,6 +62,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     {
         if(GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
         {
+            this.transform.localScale = GameManager.Instance.cardScale;
+            GameManager.Instance.canMag = false;
             isMoving = true;
             cs.blocksRaycasts = false;
 
@@ -86,6 +88,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+            GameManager.Instance.canMag = true;
         if (isMoving && !isPlayed)
         {
             isMoving = false;
@@ -99,14 +102,16 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.transform.localScale *= GameManager.Instance.magScale;
-       
-        
-        canvas.overrideSorting = true;
-        if (!isPlayed){
-            Vector2 temp = transform.position;
-            temp.y += GameManager.Instance.adjustVar;
-            transform.position = temp;
+        if (GameManager.Instance.canMag)
+        {
+            this.transform.localScale = GameManager.Instance.magScale;
+
+            canvas.overrideSorting = true;
+            if (!isPlayed){
+                Vector2 temp = transform.position;
+                temp.y += GameManager.Instance.adjustVar;
+                transform.position = temp;
+            }
         }
     }
     #endregion
@@ -114,14 +119,18 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        
-        this.transform.localScale = GameManager.Instance.cardScale;
-        canvas.overrideSorting = false;
-        if (!isPlayed)
+        if(GameManager.Instance.canMag)
         {
-            Vector2 temp = transform.position;
-            temp.y -= GameManager.Instance.adjustVar;
-            transform.position = temp;
+
+            this.transform.localScale = GameManager.Instance.cardScale;
+            canvas.overrideSorting = false;
+            if (!isPlayed)
+            {
+                Vector2 temp = transform.position;
+                temp.y -= GameManager.Instance.adjustVar;
+                transform.position = temp;
+            }
+        
         }
     }
     #endregion
