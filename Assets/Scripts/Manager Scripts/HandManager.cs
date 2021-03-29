@@ -6,6 +6,12 @@ public class HandManager : MonoBehaviour
 {
     public List<GameObject> hand;
     
+    private void Awake()
+    {
+        Vector2 temp = GetComponent<RectTransform>().position;
+        temp.y -= GameManager.Instance.handSinkVar;
+        GetComponent<RectTransform>().position = temp;
+    }
     public void AddToHand(GameObject card)
     {
         RectTransform rt = card.GetComponent<RectTransform>();

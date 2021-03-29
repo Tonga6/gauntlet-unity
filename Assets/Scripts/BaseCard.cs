@@ -88,6 +88,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        canvas.overrideSorting = false;
         GameManager.Instance.canMag = true;
         if (GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
         {
@@ -109,7 +110,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         {
             this.transform.localScale = GameManager.Instance.magScale;
 
-            canvas.overrideSorting = true;
+            canvas.overrideSorting = false;
             if (!isPlayed){
                 Vector2 temp = transform.position;
                 temp.y += GameManager.Instance.adjustVar;
@@ -122,7 +123,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(GameManager.Instance.canMag)
+        canvas.overrideSorting = true;
+        if (GameManager.Instance.canMag)
         {
 
             this.transform.localScale = GameManager.Instance.cardScale;

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -16,13 +17,18 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemyReactionCards;
     public CardPile enemyReactionDrawPile;
 
+    [Header("Card Attributes")]
     public bool canMag;
     public int adjustVar;
     public int sunkVar;
     public Vector3 magScale;
     public Vector3 cardScale;
 
+    [Header("Hand Zone Attributes")]
+    public int handSinkVar;
+
     public turnPhase phase;
+    public TextMeshProUGUI buttonText;
 
     private void Awake()
     {
@@ -44,7 +50,8 @@ public class GameManager : MonoBehaviour
 
         else
             phase++;
-        Debug.Log("Next Phase: " + phase);
+
+        buttonText.text = phase.ToString() + " Phase";
         switch (phase) // use upcast, where 0 - first, 1 - second...
         {
             case (turnPhase.START):
