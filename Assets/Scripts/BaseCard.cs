@@ -17,9 +17,11 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     [Header("Card Visuals")]
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descripText;
     public Sprite artwork;
     public CanvasGroup cs;
-    public int fontSize;
+    public int nameSize;
+    public int descripSize;
     public Canvas canvas;
     public bool isPlayed = false;
 
@@ -30,7 +32,10 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     private void Awake()
     {
         nameText.text = name;
-        nameText.fontSize = fontSize;
+        nameText.fontSize = nameSize;
+
+        descripText.text = description;
+        descripText.fontSize = descripSize;
     }
     //private void Update()
     //{
@@ -118,7 +123,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
             {
                 this.transform.localScale = GameManager.Instance.magScale;
 
-                canvas.overrideSorting = false;
+                canvas.overrideSorting = true; ;
                 if (!isPlayed){
                     Vector2 temp = transform.position;
                     temp.y += GameManager.Instance.adjustVar;
@@ -135,7 +140,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         if(owner == targetCharacter.PLAYER)
         {
 
-            canvas.overrideSorting = true;
+            canvas.overrideSorting = false;
             if (GameManager.Instance.canMag)
             {
                 this.transform.localScale = GameManager.Instance.cardScale;

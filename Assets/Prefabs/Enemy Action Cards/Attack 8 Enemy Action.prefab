@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: fontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6426069772175315589, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
       propertyPath: m_Name
       value: Attack 8 Enemy Action
