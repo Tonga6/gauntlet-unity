@@ -361,8 +361,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80.05127, y: 59.285583}
-  m_Pivot: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 80.05127, y: 108.93344}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &106939455
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +417,7 @@ MonoBehaviour:
   magScale: {x: 2.7, y: 2.7, z: 2}
   cardScale: {x: 1.6, y: 1.6, z: 1}
   handSinkVar: 50
+  seqAdjustVar: 170
   phase: 0
   buttonText: {fileID: 44574831}
 --- !u!4 &106939457
@@ -715,8 +716,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80.05127, y: 59.285583}
-  m_Pivot: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 80.05127, y: 108.93344}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &462605441
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,12 +821,12 @@ RectTransform:
   m_Children:
   - {fileID: 1249085362}
   m_Father: {fileID: 700767199}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 38.641808, y: 37.677094}
+  m_AnchoredPosition: {x: -3, y: 130}
+  m_SizeDelta: {x: 38.641815, y: 37.677094}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &472347735
 MonoBehaviour:
@@ -842,6 +843,10 @@ MonoBehaviour:
   slots:
   - {fileID: 1249085359}
   cards: []
+  timer: 0
+  hoverTime: 0
+  isHovering: 0
+  shouldExpand: 0
 --- !u!114 &472347736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,15 +854,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472347733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: -13
     m_Right: 0
-    m_Top: 0
+    m_Top: -75
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0
@@ -1409,11 +1414,11 @@ GameObject:
   - component: {fileID: 513396372}
   - component: {fileID: 513396371}
   - component: {fileID: 513396370}
-  - component: {fileID: 513396369}
   - component: {fileID: 513396368}
   - component: {fileID: 513396367}
   - component: {fileID: 513396366}
   - component: {fileID: 513396373}
+  - component: {fileID: 513396369}
   m_Layer: 0
   m_Name: Player Sequence Board
   m_TagString: PlayerSequenceBoard
@@ -1443,7 +1448,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 477.509, y: 120.90094}
+  m_SizeDelta: {x: 477.509, y: 112.62628}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &513396366
 MonoBehaviour:
@@ -1462,7 +1467,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 7
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1518,438 +1523,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 513396364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 314affd16bceddb4c99fbaa07de901d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugMode: 0
-  StartPosition: {x: 0, y: 0, z: 0}
-  StartRotation: {x: 0, y: 0, z: 0}
-  StartScale: {x: 1, y: 1, z: 1}
-  StartAlpha: 1
-  AutoHideAfterShow: 0
-  AutoHideAfterShowDelay: 3
-  AutoSelectButtonAfterShow: 0
-  BehaviorAtStart: 0
-  CustomStartAnchoredPosition: {x: 0, y: 0, z: 0}
-  DeselectAnyButtonSelectedOnHide: 0
-  DeselectAnyButtonSelectedOnShow: 0
-  DisableCanvasWhenHidden: 1
-  DisableGameObjectWhenHidden: 1
-  DisableGraphicRaycasterWhenHidden: 1
-  HideBehavior:
-    Animation:
-      AnimationType: 2
-      Move:
-        AnimationType: 2
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        Direction: 0
-        CustomPosition: {x: 0, y: 0, z: 0}
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Rotate:
-        AnimationType: 2
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        RotateMode: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Scale:
-        AnimationType: 2
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Fade:
-        AnimationType: 2
-        Enabled: 0
-        From: 0
-        To: 0
-        By: 0.5
-        UseCustomFromAndTo: 0
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-    AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
-    InstantAnimation: 0
-    OnFinished:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    OnStart:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
-  HideProgressor: {fileID: 0}
-  LoopBehavior:
-    Animation:
-      AnimationType: 3
-      Move:
-        AnimationType: 3
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        Direction: 0
-        CustomPosition: {x: 0, y: 0, z: 0}
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Rotate:
-        AnimationType: 3
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        RotateMode: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Scale:
-        AnimationType: 3
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Fade:
-        AnimationType: 3
-        Enabled: 0
-        From: 0
-        To: 0
-        By: 0.5
-        UseCustomFromAndTo: 0
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-    AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
-    InstantAnimation: 0
-    OnFinished:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    OnStart:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
-  OnInverseVisibilityChanged:
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 513396367}
+  m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  OnVisibilityChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  SelectedButton: {fileID: 0}
-  ShowBehavior:
-    Animation:
-      AnimationType: 1
-      Move:
-        AnimationType: 1
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        Direction: 0
-        CustomPosition: {x: 0, y: 0, z: 0}
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Rotate:
-        AnimationType: 1
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        RotateMode: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Scale:
-        AnimationType: 1
-        Enabled: 0
-        From: {x: 0, y: 0, z: 0}
-        To: {x: 0, y: 0, z: 0}
-        By: {x: 0, y: 0, z: 0}
-        UseCustomFromAndTo: 0
-        Vibrato: 10
-        Elasticity: 1
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-      Fade:
-        AnimationType: 1
-        Enabled: 0
-        From: 0
-        To: 0
-        By: 0.5
-        UseCustomFromAndTo: 0
-        NumberOfLoops: -1
-        LoopType: 1
-        EaseType: 0
-        Ease: 1
-        AnimationCurve:
-          serializedVersion: 2
-          m_Curve: []
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        StartDelay: 0
-        Duration: 1
-    AutoStartLoopAnimation: 1
-    LoadSelectedPresetAtRuntime: 0
-    InstantAnimation: 0
-    OnFinished:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    OnStart:
-      AnimatorEvents: []
-      Effect:
-        AutoSort: 1
-        Behavior: 0
-        CustomSortingOrder: 0
-        SortingSteps: 1
-        ParticleSystem: {fileID: 0}
-        StopBehavior: 1
-        CustomSortingLayer: Default
-      Event:
-        m_PersistentCalls:
-          m_Calls: []
-      GameEvents: []
-      SoundData:
-        SoundSource: 0
-        DatabaseName: General
-        SoundName: No Sound
-        AudioClip: {fileID: 0}
-        OutputAudioMixerGroup: {fileID: 0}
-    PresetCategory: Uncategorized
-    PresetName: Default
-  ShowProgressor: {fileID: 0}
-  TargetOrientation: 2
-  UpdateHideProgressorOnShow: 0
-  UpdateShowProgressorOnHide: 0
-  UseCustomStartAnchoredPosition: 1
-  ViewCategory: General
-  ViewName: Unnamed
 --- !u!225 &513396370
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2019,6 +1626,10 @@ MonoBehaviour:
   - {fileID: 688885291}
   - {fileID: 1389816912}
   cards: []
+  timer: 0.25
+  hoverTime: 0
+  isHovering: 0
+  shouldExpand: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,7 +1756,7 @@ RectTransform:
   - {fileID: 194952479}
   - {fileID: 1873701689}
   m_Father: {fileID: 1419087922}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2739,7 +2350,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 700767199}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2793,8 +2404,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 5000
+  m_fontSizeBase: 5000
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3108,8 +2719,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80.05127, y: 59.285583}
-  m_Pivot: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 80.05127, y: 108.93344}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &700767198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,18 +2751,19 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
   m_Children:
+  - {fileID: 1171776903}
   - {fileID: 609891005}
   - {fileID: 1581885222}
   - {fileID: 633958800}
   - {fileID: 472347734}
   - {fileID: 1594304604}
   m_Father: {fileID: 1419087922}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 7.8, y: -19}
-  m_SizeDelta: {x: 406.9709, y: 583.52124}
+  m_AnchoredPosition: {x: 0, y: -66}
+  m_SizeDelta: {x: 351.57062, y: 504.08752}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &700767200
 MonoBehaviour:
@@ -3193,7 +2805,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700767198}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3206,7 +2818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 01913ffd006fdfc4c9a99b48e6a08ad2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3444,8 +3056,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80.05127, y: 59.285583}
-  m_Pivot: {x: 0.5, y: 0}
+  m_SizeDelta: {x: 80.05127, y: 108.93344}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061740433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3498,6 +3110,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 513396373}
   card: {fileID: 0}
+--- !u!1 &1171776902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171776903}
+  - component: {fileID: 1171776906}
+  - component: {fileID: 1171776905}
+  - component: {fileID: 1171776904}
+  m_Layer: 0
+  m_Name: Enemy Health Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1171776903
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171776902}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_Children: []
+  m_Father: {fileID: 700767199}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -45}
+  m_SizeDelta: {x: 132.20245, y: 7.547493}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1171776904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171776902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495581a3363686044913fb9e1c154766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 472347735}
+  card: {fileID: 0}
+--- !u!114 &1171776905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171776902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6792453, g: 0.13777146, b: 0.13777146, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7cd9d16a2693e8747861b8305a079d0b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1171776906
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171776902}
+  m_CullTransparentMesh: 0
 --- !u!114 &1185303036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1737839950000006474, guid: 637ea5480dfa22942ae9e3dd1baa6acc, type: 3}
@@ -3562,8 +3264,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2dfd823fb2c10664d8255866ce6fc8f2, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8630965f3f9051d4e91c5b2d59af35c7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3594,11 +3296,11 @@ RectTransform:
   m_Father: {fileID: 472347734}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -0.7028599, y: 18.661455}
   m_SizeDelta: {x: 24.59428, y: 24.59428}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1331057646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3632,7 +3334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3817290019887044493, guid: 637ea5480dfa22942ae9e3dd1baa6acc, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3817290019887044493, guid: 637ea5480dfa22942ae9e3dd1baa6acc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3912,8 +3614,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 80.05127, y: 59.285583}
-  m_Pivot: {x: 0.5, y: 1}
+  m_SizeDelta: {x: 80.05127, y: 108.93344}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389816912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3999,8 +3701,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 597458888}
   - {fileID: 700767199}
+  - {fileID: 597458888}
   m_Father: {fileID: 1335747990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4022,14 +3724,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1974457, g: 0.2735849, b: 0.22786665, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f53e9d1383f6b4488bc6e6cb48d5066, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4702,7 +4404,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 700767199}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4823,7 +4525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1594304604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4836,7 +4538,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 700767199}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -7500,7 +7202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751840, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 90.7713
+      value: 100.900925
       objectReference: {fileID: 0}
     - target: {fileID: 5302555876842751840, guid: cec7dc6a82971f74e9c986254be38de9, type: 3}
       propertyPath: m_LocalPosition.x

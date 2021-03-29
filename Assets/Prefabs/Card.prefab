@@ -140,6 +140,7 @@ MonoBehaviour:
   nameText: {fileID: 8096128699300591859}
   artwork: {fileID: 0}
   cs: {fileID: 309500972}
+  fontSize: 9
   canvas: {fileID: 5747240276497365444}
   isPlayed: 0
   cardEffects:

@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [Header("Hand Zone Attributes")]
     public int handSinkVar;
 
+    [Header("Sequence Zone Attributes")]
+    public int seqAdjustVar;
+
     public turnPhase phase;
     public TextMeshProUGUI buttonText;
 
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (turnPhase.ENEMY):
                 EnemyPhase();
+                
                 break;
             case (turnPhase.PLAYER):
                 break;
@@ -73,11 +77,12 @@ public class GameManager : MonoBehaviour
     void StartPhase()
     {
         PlayerManager.Instance.StartPhase();
-        //NextPhase();
+        NextPhase();
     }
     void EnemyPhase()
     {
         EnemyManager.Instance.EnemyAction();
+        NextPhase();
     }
     void EndPhase()
     {

@@ -2,17 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class SequenceManager : MonoBehaviour
+using UnityEngine.EventSystems;
+public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public List<SequenceSlot> slots = new List<SequenceSlot>();
     public List<GameObject> cards = new List<GameObject>();
+
+    [Header("Hover attributes")]
+    public float timer;
+    public float hoverTime;
+    public bool isHovering = false;
+    public bool shouldExpand;
 
 
     private void Awake()
     {
         ClearSequence();
             //slots[0].gameObject.GetComponent<SequenceSlot>().enabled = true;
+    }
+    private void Update()
+    {
+        if (isHovering)
+        {
+            hoverTime += Time.deltaTime;
+            if (hoverTime >= timer)
+            {
+                shouldExpand= true;
+                OnPointerEnter(null);
+            }
+        }
+
     }
     public void ActivateCards()
     {
@@ -87,4 +106,34 @@ public class SequenceManager : MonoBehaviour
         }
         cards.Clear();
     }
+    #region OnPointerEnter
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isHovering = true;
+        if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
+        {
+            isHovering = false;
+            Vector2 temp = transform.position;
+            temp.y += GameManager.Instance.seqAdjustVar;
+            transform.position = temp;
+        }
+    }
+    #endregion
+
+    #region OnPointerExit
+    public void OnPointerExit(PointerEventData eventData)
+    {
+            isHovering = false;
+            hoverTime = 0;
+            if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
+            {
+                shouldExpand = false;
+                Vector2 temp = transform.position;
+                temp.y -= GameManager.Instance.seqAdjustVar;
+                transform.position = temp;
+            }
+
+        
+    }
+    #endregion
 }

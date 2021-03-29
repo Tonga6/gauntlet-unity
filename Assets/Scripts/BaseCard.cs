@@ -13,12 +13,13 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 	public string description;
     public cardType cardType;
 	public bool isMoving;
+    public targetCharacter owner;
 
     [Header("Card Visuals")]
     public TextMeshProUGUI nameText;
     public Sprite artwork;
     public CanvasGroup cs;
-
+    public int fontSize;
     public Canvas canvas;
     public bool isPlayed = false;
 
@@ -29,8 +30,12 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     private void Awake()
     {
         nameText.text = name;
-        nameText.fontSize = 8;
+        nameText.fontSize = fontSize;
     }
+    //private void Update()
+    //{
+    //    if ()
+    //}
     public void ActivateEffects()
     {
         foreach (CardEffect effect in cardEffects)
@@ -106,15 +111,19 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameManager.Instance.canMag)
+        if(owner == targetCharacter.PLAYER)
         {
-            this.transform.localScale = GameManager.Instance.magScale;
 
-            canvas.overrideSorting = false;
-            if (!isPlayed){
-                Vector2 temp = transform.position;
-                temp.y += GameManager.Instance.adjustVar;
-                transform.position = temp;
+            if (GameManager.Instance.canMag)
+            {
+                this.transform.localScale = GameManager.Instance.magScale;
+
+                canvas.overrideSorting = false;
+                if (!isPlayed){
+                    Vector2 temp = transform.position;
+                    temp.y += GameManager.Instance.adjustVar;
+                    transform.position = temp;
+                }
             }
         }
     }
@@ -123,19 +132,22 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        canvas.overrideSorting = true;
-        if (GameManager.Instance.canMag)
+        if(owner == targetCharacter.PLAYER)
         {
 
-            this.transform.localScale = GameManager.Instance.cardScale;
-            canvas.overrideSorting = false;
-            if (!isPlayed)
+            canvas.overrideSorting = true;
+            if (GameManager.Instance.canMag)
             {
-                Vector2 temp = transform.position;
-                temp.y -= GameManager.Instance.adjustVar;
-                transform.position = temp;
-            }
+                this.transform.localScale = GameManager.Instance.cardScale;
+                canvas.overrideSorting = false;
+                if (!isPlayed)
+                {
+                    Vector2 temp = transform.position;
+                    temp.y -= GameManager.Instance.adjustVar;
+                    transform.position = temp;
+                }
         
+            }
         }
     }
     #endregion
