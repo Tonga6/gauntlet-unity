@@ -15,7 +15,6 @@ MonoBehaviour:
   hasActivated: 0
   target: 0
   condition: {fileID: 0}
-  shield: 7
 --- !u!1001 &4622163181455702866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,7 +44,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: name
-      value: Block
+      value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: shield
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardType
@@ -57,7 +60,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: description
-      value: Gain 5 shield
+      value: Gain Y shield
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardEffects.Array.data[0]
@@ -65,7 +68,7 @@ PrefabInstance:
       objectReference: {fileID: 4773332841691968288}
     - target: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Name
-      value: Defend 7
+      value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_IsActive

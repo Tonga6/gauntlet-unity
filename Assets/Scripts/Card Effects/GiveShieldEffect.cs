@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GiveShieldEffect : CardEffect
 {
-    public int shield;
-
+    int shield = 6;
     public override void ActivateEffect()
     {
         Debug.Log("Activated Effect: " + this.gameObject.name);

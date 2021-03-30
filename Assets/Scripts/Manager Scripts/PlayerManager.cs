@@ -40,8 +40,10 @@ public class PlayerManager : CharacterManager
     }
     public void RefillHand()
     {
-        while (handSize < maxHandSize && !drawPile.IsEmpty())
+        while (handSize < maxHandSize)
         {
+            if (drawPile.IsEmpty())
+                RefillDrawPile();
             DrawCard();
         }
     }
@@ -68,7 +70,8 @@ public class PlayerManager : CharacterManager
             handSize--;
             currMana -= card.GetComponent<BaseCard>().manaCost;
             manaText.text = currMana.ToString();
-            card.GetComponent<BaseCard>().ActivateEffects();
+            sm.NewCard(card);
+            EnemyManager.Instance.EnemyReaction();
             return true;
         }
         return false;
@@ -77,10 +80,6 @@ public class PlayerManager : CharacterManager
     {
         currMana = maxMana;
         manaText.text = currMana.ToString();
-
-        if (drawPile.IsEmpty())
-            RefillDrawPile();
-
         RefillHand();
     }
     public void ClearBoard()

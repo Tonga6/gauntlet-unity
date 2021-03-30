@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     public List<SequenceSlot> slots = new List<SequenceSlot>();
     public List<GameObject> cards = new List<GameObject>();
@@ -37,12 +37,14 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         foreach(SequenceSlot slot in slots)
         {
+            Debug.Log(slot.card);
             if (slot.card != null)
                 slot.card.GetComponent<BaseCard>().ActivateEffects();
         }
     }
     public bool AdjacencyCheck(GameObject card, List<cardType> typeCombo, int adjacency)
     {
+        
         int inc;
         if (adjacency > 0)
             inc = 1;            // Check ensuing cards
@@ -51,6 +53,10 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         int pivot = cards.IndexOf(card);
         int i = pivot + inc;
+        
+        //If card is reaction, use last played player card as pivot 
+        if (card.GetComponent<BaseCard>().owner == targetCharacter.ENEMY)
+            i = cards.Count - 1;
         for (int j = 0; (i < cards.Count && i >= 0) && adjacency != 0;j++)
         {
             if (cards[i].GetComponent<BaseCard>().cardType != typeCombo[j])
@@ -67,7 +73,9 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void NewCard(GameObject card)
     {
+        Debug.Log("new card added to seq: " + card.name);
         cards.Add(card);
+        slots[slots.Count - 1].card = card;
 
         card.GetComponent<RectTransform>().parent = slots[cards.Count-1].GetComponent<RectTransform>();
         card.GetComponent<BaseCard>().isPlayed = true;
@@ -81,7 +89,8 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             Color temp = tempImage.color;
             temp.a = 1;
             slots[cards.Count].gameObject.GetComponent<Image>().color = temp;
-        }   
+        }
+        ActivateCards();
     }
 
     public void ClearSequence()
@@ -106,6 +115,20 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         cards.Clear();
     }
+    #region IBeginDropHandler implementation
+    public void OnDrop(PointerEventData data)
+    {
+        if (data != null)
+        {
+            GameObject card = data.pointerDrag;
+                if (card.GetComponent<BaseCard>().isMoving && GameManager.Instance.phase == turnPhase.PLAYER)
+                {
+                    PlayerManager.Instance.PlayCard(card);
+                }
+        }
+    }
+    #endregion
+
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Doozy.Engine.UI;
 
-public class SequenceSlot : MonoBehaviour, IDropHandler
+public class DropZone : MonoBehaviour, IDropHandler
 {
-    public SequenceManager sm;
-    [SerializeField]
-    public GameObject card;
     #region IBeginDropHandler implementation
+    SequenceManager sm;
+
+    private void Awake()
+    {
+        sm = GameObject.FindGameObjectWithTag("PlayerSequenceBoard").GetComponent<SequenceManager>();
+    }
     public void OnDrop(PointerEventData data)
     {
         if (data != null)

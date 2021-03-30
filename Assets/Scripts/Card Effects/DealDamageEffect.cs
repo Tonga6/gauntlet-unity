@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DealDamageEffect : CardEffect
 {
-    public int damage = 5;
+    int damage = 7;
 
     public override void ActivateEffect()
     {
-        Debug.Log("Activated Effect: " + this.gameObject.name);
+        Debug.Log("DealDamageEffect: " + this.gameObject.name);
         EffectManager.Instance.DealDamage(target, damage);
     }
 }

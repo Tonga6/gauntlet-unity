@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDropHandler
 {
     public static GameManager Instance { get; private set; }
 
@@ -29,8 +30,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Sequence Zone Attributes")]
     public int seqAdjustVar;
+    public SequenceManager playerSeq;
 
     public turnPhase phase;
+    public int turnCount = 0;
     public TextMeshProUGUI buttonText;
 
     private void Awake()
@@ -42,7 +45,11 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         playerDrawPile.Populate(playerCards);
+
         enemyActionDrawPile.Populate(enemyActionCards);
+        enemyReactionDrawPile.Populate(enemyReactionCards);
+
+        playerSeq = GameObject.FindGameObjectWithTag("PlayerSequenceBoard").GetComponent<SequenceManager>();
         StartPhase();
     }
 
@@ -65,6 +72,7 @@ public class GameManager : MonoBehaviour
                 
                 break;
             case (turnPhase.PLAYER):
+                Debug.Log("PLAYER PHASE");
                 break;
             case (turnPhase.END):
                 EndPhase();
@@ -76,19 +84,44 @@ public class GameManager : MonoBehaviour
 
     void StartPhase()
     {
+        turnCount++;
         PlayerManager.Instance.StartPhase();
-        NextPhase();
+        //NextPhase();
     }
     void EnemyPhase()
     {
         EnemyManager.Instance.EnemyAction();
-        NextPhase();
+        //NextPhase();
     }
     void EndPhase()
     {
         PlayerManager.Instance.ClearBoard();
-        NextPhase();
+        //NextPhase();
     }
+
+    #region IBeginDropHandler implementation
+    public void OnDrop(PointerEventData data)
+    {
+        Debug.Log("Dropped");
+        if (data != null)
+        {
+            GameObject card = data.pointerDrag;
+            //if (sm.CompareTag("PlayerSequenceBoard"))
+            //{
+            //    if (card.GetComponent<BaseCard>().isMoving)
+            //    {
+            //        if (PlayerManager.Instance.PlayCard(card))
+            //        {
+            //            sm.NewCard(card);
+            //            sm.ActivateCards();
+            //        }
+            //    }
+
+            //}
+
+        }
+    }
+    #endregion
 }
 
 public enum turnPhase{
