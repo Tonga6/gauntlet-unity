@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerSequenceBoard
   - EnemySequenceBoard
+  - MasterCanvas
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class EffectManager : MonoBehaviour
 {
     public static EffectManager Instance;
     public List<CharacterManager> targets;
+    public CamShake camShake;
     private void Awake()
     {
         if (Instance != null)
@@ -13,6 +14,9 @@ public class EffectManager : MonoBehaviour
                 Destroy(this.gameObject);
                 return;
             }
+        //camShake = Camera.main.GetComponent<CamShake>();
+        
+        camShake = GameObject.FindGameObjectWithTag("MasterCanvas").GetComponent<CamShake>();
         Instance = this;
         //use for simple targeting
         if (PlayerManager.Instance != null && EnemyManager.Instance != null)
@@ -25,6 +29,7 @@ public class EffectManager : MonoBehaviour
     public void DealDamage(targetCharacter target, int damage)
     {
         Debug.Log("Deal Damage called to target: " + target);
+        camShake.Shake();
         if (target == targetCharacter.ENEMY)
         {
             EnemyManager.Instance.TakeDamage(damage);

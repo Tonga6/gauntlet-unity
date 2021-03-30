@@ -13,6 +13,8 @@ public class EnemyManager : CharacterManager
     public SequenceManager actionSeq;
     public SequenceManager reactionSeq;
 
+    public Animator animator;
+
     private void Awake()
     {
         if (Instance == null)
@@ -31,6 +33,11 @@ public class EnemyManager : CharacterManager
         //Activate action
         if (actionSeq.cards.Count != 0)
         {
+            if (actionSeq.cards[0].GetComponent<BaseCard>().cardType == cardType.Attack)
+            {
+                animator.SetTrigger("isAttacking");
+            }
+
             actionSeq.cards[0].GetComponent<BaseCard>().ActivateEffects();
             actionPile.Push(actionSeq.cards[0]);
             actionSeq.cards.RemoveAt(0);
