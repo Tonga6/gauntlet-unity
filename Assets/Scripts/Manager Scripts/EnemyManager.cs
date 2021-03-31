@@ -26,7 +26,7 @@ public class EnemyManager : CharacterManager
             Destroy(this);
     }
 
-    public void EnemyAction()
+    public void EnemyPhase()
     {
         //Check action condition
         if (actionSeq.cards.Count > 0)
@@ -47,7 +47,23 @@ public class EnemyManager : CharacterManager
         //Queue next turn's action
         if (actionPile.cards.Count > 0)
         {
+            actionPile.ShufflePile();
             actionSeq.NewCard(actionPile.Pop());
+        }
+
+        //Queue next Reaction first so only one reaction can occur per turn
+        if (reactionPile.cards.Count > 0)
+        {
+            Debug.Log("Queue enemy action condition");
+            if (reactionSeq.cards.Count > 0)
+            {
+                Debug.Log("Seq not empty");
+                reactionPile.Push(reactionSeq.cards[0]);
+                reactionSeq.cards.RemoveAt(0);
+                reactionSeq.slots[0].card = null;
+            }
+            reactionPile.ShufflePile();
+            reactionSeq.NewCard(reactionPile.Pop());
         }
 
         EnemyReaction();
@@ -55,9 +71,11 @@ public class EnemyManager : CharacterManager
     public void EnemyReaction()
     {
         
+
         //Check reaction condition
         if (reactionSeq.cards.Count != 0)
         {
+            Debug.Log("Check reaction condition");
             for(int i = 0; i < reactionSeq.cards.Count; i++)
             {
                 reactionSeq.ActivateCards();
@@ -79,9 +97,7 @@ public class EnemyManager : CharacterManager
             
         }
 
-        //Queue next Reaction
-        if (reactionPile.cards.Count > 0 && reactionSeq.cards.Count == 0)
-            reactionSeq.NewCard(reactionPile.Pop());
+        
 
     }
 }

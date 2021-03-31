@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour, IDropHandler
     }
     void EnemyPhase()
     {
-        EnemyManager.Instance.EnemyAction();
+        EnemyManager.Instance.EnemyPhase();
         //NextPhase();
     }
     void EndPhase()
