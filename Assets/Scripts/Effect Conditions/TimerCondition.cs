@@ -9,7 +9,6 @@ public class TimerCondition : EffectCondition
     private void Awake()
     {
         playedTurn = GameManager.Instance.turnCount;
-        Debug.Log("playedTurn" + playedTurn);
     }
     public override bool checkCondition()
     {

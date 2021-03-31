@@ -28,7 +28,7 @@ public class EffectManager : MonoBehaviour
 
     public void DealDamage(targetCharacter target, int damage)
     {
-        Debug.Log("Deal Damage called to target: " + target);
+        Debug.Log(damage);
         camShake.Shake();
         if (target == targetCharacter.ENEMY)
         {

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7077862469882256787}
   - component: {fileID: 7077862469882256786}
   m_Layer: 0
-  m_Name: Enemy Damage Action
+  m_Name: Enemy Damage Action 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   shield: 0
   isMoving: 0
   owner: 1
+  isExhausted: 0
   nameText: {fileID: 0}
   descripText: {fileID: 7077862469882256784}
   artwork: {fileID: 0}
@@ -185,6 +186,7 @@ MonoBehaviour:
   hasActivated: 0
   target: 0
   condition: {fileID: 7077862469882256781}
+  damage: 15
 --- !u!114 &7077862469882256781
 MonoBehaviour:
   m_ObjectHideFlags: 0

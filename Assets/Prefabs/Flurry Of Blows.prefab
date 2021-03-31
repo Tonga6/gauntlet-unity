@@ -30,7 +30,7 @@ MonoBehaviour:
   hasActivated: 0
   target: 1
   condition: {fileID: 6399901275295956043}
-  damage: 14
+  damage: 15
 --- !u!1001 &4622163181455702866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59,6 +59,10 @@ PrefabInstance:
       value: Flurry Of Blows
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardType
       value: 0
       objectReference: {fileID: 0}
@@ -72,7 +76,7 @@ PrefabInstance:
       objectReference: {fileID: 3494233404762112929}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: description
-      value: Deal 7 damage
+      value: '<- 2R: Deal X damage'
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardEffects.Array.data[0]

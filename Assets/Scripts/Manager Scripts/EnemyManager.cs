@@ -24,40 +24,36 @@ public class EnemyManager : CharacterManager
         }
         else
             Destroy(this);
-
     }
 
     public void EnemyAction()
     {
-        Debug.Log("Enemy Action");
-        //Activate action
-        if (actionSeq.cards.Count != 0)
-        {
-
-            actionSeq.cards[0].GetComponent<BaseCard>().ActivateEffects();
-            actionPile.Push(actionSeq.cards[0]);
-            actionSeq.slots[0].card = null;
-
-            if (actionSeq.cards[0].GetComponent<BaseCard>().cardType == cardType.Attack)
-            {
-                animator.SetTrigger("isAttacking");
-            }
-            actionSeq.cards.RemoveAt(0);
-        }
-
         //Queue next turn's action
-        actionSeq.NewCard(actionPile.Pop());
-
-        Debug.Log("Action Pile Size: " + actionPile.cards.Count);
         if (actionPile.cards.Count > 0)
         {
-            actionSeq.NewCard(reactionPile.Pop());
+            actionSeq.NewCard(actionPile.Pop());
         }
+        //Check action condition
+        if (actionSeq.cards.Count > 0)
+        {
+            actionSeq.ActivateCards();
+
+            //If is attack card and was activation conditions were met
+            if (actionSeq.cards[0].GetComponent<BaseCard>().cardType == cardType.Attack && actionSeq.cards[0].GetComponent<BaseCard>().isExhausted)
+            {
+                Debug.Log("Perform Action");
+                animator.SetTrigger("isAttacking");
+            }
+            actionPile.Push(actionSeq.cards[0]);
+            actionSeq.slots[0].card = null;
+            actionSeq.cards.RemoveAt(0);
+        }
+        
+
         EnemyReaction();
     }
     public void EnemyReaction()
     {
-        Debug.Log("Enemy Reaction");
         if (reactionPile.cards.Count != 0)
             reactionSeq.NewCard(reactionPile.Pop());
         //Check reaction condition
@@ -65,7 +61,7 @@ public class EnemyManager : CharacterManager
         {
             for(int i = 0; i < reactionSeq.cards.Count; i++)
             {
-                reactionSeq.cards[i].GetComponent<BaseCard>().ActivateEffects();
+                reactionSeq.ActivateCards();
 
                 //If reaction conditions were met
                 if (reactionSeq.cards[i].GetComponent<BaseCard>().isExhausted)
@@ -85,6 +81,7 @@ public class EnemyManager : CharacterManager
             }
             
         }
+
 
         
     }

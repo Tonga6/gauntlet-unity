@@ -155,7 +155,7 @@ MonoBehaviour:
   name: 
   description: X
   cardType: 0
-  damage: 15
+  damage: 22
   shield: 0
   isMoving: 0
   owner: 1
@@ -186,6 +186,7 @@ MonoBehaviour:
   hasActivated: 0
   target: 0
   condition: {fileID: 7522617246165520814}
+  damage: 22
 --- !u!223 &7077862469882256787
 Canvas:
   m_ObjectHideFlags: 0

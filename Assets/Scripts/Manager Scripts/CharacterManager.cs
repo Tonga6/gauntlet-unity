@@ -31,7 +31,6 @@ public class CharacterManager : MonoBehaviour
 
     public void TakeDamage (int damage)
     {
-        Debug.Log("Dealing " + damage + " damage");
         if (damage > shield)
         {
             health -= damage - shield;

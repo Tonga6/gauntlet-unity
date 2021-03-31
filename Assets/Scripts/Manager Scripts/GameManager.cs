@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour, IDropHandler
                 
                 break;
             case (turnPhase.PLAYER):
-                Debug.Log("PLAYER PHASE");
                 break;
             case (turnPhase.END):
                 EndPhase();
@@ -102,7 +101,6 @@ public class GameManager : MonoBehaviour, IDropHandler
     #region IBeginDropHandler implementation
     public void OnDrop(PointerEventData data)
     {
-        Debug.Log("Dropped");
         if (data != null)
         {
             GameObject card = data.pointerDrag;

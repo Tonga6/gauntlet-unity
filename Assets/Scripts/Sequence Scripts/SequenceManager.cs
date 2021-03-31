@@ -37,7 +37,6 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         foreach(SequenceSlot slot in slots)
         {
-            Debug.Log(slot.card);
             if (slot.card != null)
                 slot.card.GetComponent<BaseCard>().ActivateEffects();
         }
@@ -73,7 +72,6 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void NewCard(GameObject card)
     {
-        Debug.Log("new card added to seq: " + card.name);
         cards.Add(card);
         slots[slots.Count - 1].card = card;
 
@@ -90,7 +88,10 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             temp.a = 1;
             slots[cards.Count].gameObject.GetComponent<Image>().color = temp;
         }
-        ActivateCards();
+
+        //Only activate on play if is player card
+        if(card.GetComponent<BaseCard>().owner == targetCharacter.PLAYER)
+            ActivateCards();
     }
 
     public void ClearSequence()

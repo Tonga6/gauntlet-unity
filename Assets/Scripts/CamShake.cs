@@ -37,7 +37,6 @@ public class CamShake : MonoBehaviour
 	}
 	public void Shake()
     {
-		Debug.Log("Shake");
 		shakeDuration = .25f;
     }
 }

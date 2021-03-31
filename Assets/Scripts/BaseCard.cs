@@ -40,25 +40,22 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
             nameText.text = name;
             nameText.fontSize = nameSize;
         }
-        if(owner == targetCharacter.ENEMY)
-            Debug.Log(description.Contains("X"));
         description = description.Replace("X", damage.ToString());
         description = description.Replace("Y", shield.ToString());
 
         descripText.text = description;
         descripText.fontSize = descripSize;
     }
-    //private void Update()
-    //{
-    //    if ()
-    //}
+
     public void ActivateEffects()
     {
         int activated = 0;
         foreach (CardEffect effect in cardEffects)
         {
+            Debug.Log("Try activate: " + effect.name);
             if (effect.CanActivate())
             {
+                Debug.Log(effect.name + " " + "Activated");
                 effect.hasActivated = true;
                 effect.ActivateEffect();
                 activated++;
@@ -74,6 +71,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
             effect.hasActivated = false;
         }
         isPlayed = false;
+        isExhausted = false;
         gameObject.SetActive(false);
     }
 
