@@ -28,11 +28,6 @@ public class EnemyManager : CharacterManager
 
     public void EnemyAction()
     {
-        //Queue next turn's action
-        if (actionPile.cards.Count > 0)
-        {
-            actionSeq.NewCard(actionPile.Pop());
-        }
         //Check action condition
         if (actionSeq.cards.Count > 0)
         {
@@ -49,13 +44,17 @@ public class EnemyManager : CharacterManager
             actionSeq.cards.RemoveAt(0);
         }
         
+        //Queue next turn's action
+        if (actionPile.cards.Count > 0)
+        {
+            actionSeq.NewCard(actionPile.Pop());
+        }
 
         EnemyReaction();
     }
     public void EnemyReaction()
     {
-        if (reactionPile.cards.Count != 0)
-            reactionSeq.NewCard(reactionPile.Pop());
+        
         //Check reaction condition
         if (reactionSeq.cards.Count != 0)
         {
@@ -66,23 +65,23 @@ public class EnemyManager : CharacterManager
                 //If reaction conditions were met
                 if (reactionSeq.cards[i].GetComponent<BaseCard>().isExhausted)
                 {
-
-                    reactionPile.Push(reactionSeq.cards[i]);
-                    reactionSeq.cards.RemoveAt(i);
-                    reactionSeq.slots[i].card = null;
-                    //Queue next turn's action
-                    reactionSeq.NewCard(reactionPile.Pop());
                     if (reactionSeq.cards[0].GetComponent<BaseCard>().cardType == cardType.Attack)
                     {
                         animator.SetTrigger("isAttacking");
                     }
+
+                    reactionPile.Push(reactionSeq.cards[i]);
+                    reactionSeq.cards.RemoveAt(i);
+                    reactionSeq.slots[i].card = null;
                 }
 
             }
             
         }
 
+        //Queue next Reaction
+        if (reactionPile.cards.Count > 0 && reactionSeq.cards.Count == 0)
+            reactionSeq.NewCard(reactionPile.Pop());
 
-        
     }
 }

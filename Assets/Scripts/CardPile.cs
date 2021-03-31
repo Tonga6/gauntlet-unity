@@ -28,8 +28,8 @@ public class CardPile : MonoBehaviour
     {
         if (!IsEmpty())
         {
-            GameObject temp = cards[cards.Count - 1];
-            cards.RemoveAt(cards.Count - 1);
+            GameObject temp = cards[0];
+            cards.RemoveAt(0);
 
             temp.SetActive(true);
             UpdateCount();

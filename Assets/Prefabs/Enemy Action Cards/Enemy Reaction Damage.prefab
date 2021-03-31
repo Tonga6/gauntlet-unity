@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 7077862469882256784}
   - component: {fileID: 7077862469882256783}
   - component: {fileID: 7077862469882256782}
-  - component: {fileID: 7077862469882256781}
   - component: {fileID: 7077862469882256787}
   - component: {fileID: 7077862469882256786}
+  - component: {fileID: 7522617246165520814}
   m_Layer: 0
-  m_Name: Enemy Damage Action 1
+  m_Name: Enemy Reaction Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manaCost: 0
-  name: 
-  description: X
+  name: 2R
+  description: 2R
   cardType: 0
-  damage: 15
+  damage: 22
   shield: 0
   isMoving: 0
   owner: 1
@@ -185,23 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasActivated: 0
   target: 0
-  condition: {fileID: 7077862469882256781}
-  damage: 15
---- !u!114 &7077862469882256781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7077862469882256779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a533459131ade4428f299cfe74adc2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sm: {fileID: 0}
-  playedTurn: 0
-  timer: 1
+  condition: {fileID: 7522617246165520814}
+  damage: 22
 --- !u!223 &7077862469882256787
 Canvas:
   m_ObjectHideFlags: 0
@@ -235,3 +220,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7522617246165520814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077862469882256779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580cea2207f583d409a0e8a0a1db77d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  adjacency: -2
+  typeCombo: 0000000000000000
