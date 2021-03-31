@@ -3032,6 +3032,7 @@ MonoBehaviour:
   enemyReactionCards:
   - {fileID: 7077862469882256779, guid: 27e06dfc7bcdb864188f28e88edda501, type: 3}
   - {fileID: 8446207306590960954, guid: c43d84898a8251d4bb8fbb6553e50489, type: 3}
+  - {fileID: 7077862469882256779, guid: 56c551bbb3375b24a9ed2283b2dab1e0, type: 3}
   enemyReactionDrawPile: {fileID: 2014726382}
   canMag: 1
   adjustVar: 180
@@ -3422,8 +3423,8 @@ MonoBehaviour:
   shieldText: {fileID: 699575942}
   healthBar: {fileID: 1545143487}
   shieldBar: {fileID: 1155063904}
-  maxHealth: 240
-  health: 240
+  maxHealth: 180
+  health: 180
   maxShield: 20
   shield: 0
   maxHandSize: 0
