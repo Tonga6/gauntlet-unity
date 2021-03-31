@@ -85,17 +85,19 @@ public class GameManager : MonoBehaviour, IDropHandler
     {
         turnCount++;
         PlayerManager.Instance.StartPhase();
-        //NextPhase();
+        if(EnemyManager.Instance != null)
+            NextPhase();
     }
     void EnemyPhase()
     {
         EnemyManager.Instance.EnemyPhase();
-        //NextPhase();
+        NextPhase();
     }
     void EndPhase()
     {
         PlayerManager.Instance.ClearBoard();
-        //NextPhase();
+        PlayerManager.Instance.ClearHand();
+        NextPhase();
     }
 
     #region IBeginDropHandler implementation

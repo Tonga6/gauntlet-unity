@@ -36,7 +36,6 @@ public class EnemyManager : CharacterManager
             //If is attack card and was activation conditions were met
             if (actionSeq.cards[0].GetComponent<BaseCard>().cardType == cardType.Attack && actionSeq.cards[0].GetComponent<BaseCard>().isExhausted)
             {
-                Debug.Log("Perform Action");
                 animator.SetTrigger("isAttacking");
             }
             actionPile.Push(actionSeq.cards[0]);
@@ -54,10 +53,8 @@ public class EnemyManager : CharacterManager
         //Queue next Reaction first so only one reaction can occur per turn
         if (reactionPile.cards.Count > 0)
         {
-            Debug.Log("Queue enemy action condition");
             if (reactionSeq.cards.Count > 0)
             {
-                Debug.Log("Seq not empty");
                 reactionPile.Push(reactionSeq.cards[0]);
                 reactionSeq.cards.RemoveAt(0);
                 reactionSeq.slots[0].card = null;
@@ -67,6 +64,7 @@ public class EnemyManager : CharacterManager
         }
 
         EnemyReaction();
+        //yield return new WaitForSeconds(2f);
     }
     public void EnemyReaction()
     {
@@ -75,7 +73,6 @@ public class EnemyManager : CharacterManager
         //Check reaction condition
         if (reactionSeq.cards.Count != 0)
         {
-            Debug.Log("Check reaction condition");
             for(int i = 0; i < reactionSeq.cards.Count; i++)
             {
                 reactionSeq.ActivateCards();
@@ -87,12 +84,10 @@ public class EnemyManager : CharacterManager
                     {
                         animator.SetTrigger("isAttacking");
                     }
-
                     reactionPile.Push(reactionSeq.cards[i]);
                     reactionSeq.cards.RemoveAt(i);
                     reactionSeq.slots[i].card = null;
                 }
-
             }
             
         }

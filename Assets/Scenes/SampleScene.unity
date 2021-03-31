@@ -2388,7 +2388,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 112.70009}
+  m_SizeDelta: {x: 0, y: 139.4172}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &597458889
 MonoBehaviour:
@@ -5274,6 +5274,18 @@ PrefabInstance:
     - target: {fileID: 5150838643263263571, guid: b1e6d318ccf3e1a4eaabb66351f427bf, type: 3}
       propertyPath: m_Name
       value: Shield Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150838643833533776, guid: b1e6d318ccf3e1a4eaabb66351f427bf, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150838643833533776, guid: b1e6d318ccf3e1a4eaabb66351f427bf, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3238845
+      objectReference: {fileID: 0}
+    - target: {fileID: 5150838643833533776, guid: b1e6d318ccf3e1a4eaabb66351f427bf, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2258366
       objectReference: {fileID: 0}
     - target: {fileID: 5150838643836481462, guid: b1e6d318ccf3e1a4eaabb66351f427bf, type: 3}
       propertyPath: m_Name

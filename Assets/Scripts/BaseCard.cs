@@ -52,10 +52,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         int activated = 0;
         foreach (CardEffect effect in cardEffects)
         {
-            Debug.Log("Try activate: " + effect.name);
             if (effect.CanActivate())
             {
-                Debug.Log(effect.name + " " + "Activated");
                 effect.hasActivated = true;
                 effect.ActivateEffect();
                 activated++;

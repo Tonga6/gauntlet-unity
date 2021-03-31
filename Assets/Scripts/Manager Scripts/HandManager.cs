@@ -23,4 +23,14 @@ public class HandManager : MonoBehaviour
 
         hand.Add(card);
     }
+    public void RemoveFromHand(GameObject card)
+    {
+        //Which card removed doesn't matter
+        if (card == null)
+            card = hand[0];
+
+        Debug.Log("Remove from hand " + card);
+        PlayerManager.Instance.discardPile.Push(card);
+        hand.Remove(card);
+    }
 }

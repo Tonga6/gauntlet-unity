@@ -111,8 +111,9 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         //set card inactive whil in card pile
         foreach (GameObject card in cards)
         {
+            PlayerManager.Instance.hm.RemoveFromHand(card);
             card.GetComponent<BaseCard>().ResetCard();
-            PlayerManager.Instance.discardPile.Push(card);
+           // PlayerManager.Instance.discardPile.Push(card);
         }
         cards.Clear();
     }

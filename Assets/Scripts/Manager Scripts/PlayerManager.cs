@@ -36,7 +36,6 @@ public class PlayerManager : CharacterManager
         else
             Destroy(this);
         RefillHand();
-        
     }
     public void RefillHand()
     {
@@ -47,12 +46,21 @@ public class PlayerManager : CharacterManager
             DrawCard();
         }
     }
+    public void ClearHand()
+    {
+        while (hm.GetComponent<HandManager>().hand.Count > 0)
+        {
+            hm.GetComponent<HandManager>().RemoveFromHand(null);
+            handSize--;
+        }
+        Debug.Log(handSize);
+    }
     public void RefillDrawPile()
     {
-       while (!discardPile.IsEmpty())
-        {
-            drawPile.Push(discardPile.Pop());
-        }
+            while (!discardPile.IsEmpty())
+            {
+                drawPile.Push(discardPile.Pop());
+            }
     }
     public void DrawCard()
     {
@@ -68,6 +76,7 @@ public class PlayerManager : CharacterManager
         if (currMana >= card.GetComponent<BaseCard>().manaCost)
         {
             handSize--;
+            hm.hand.Remove(card);
             currMana -= card.GetComponent<BaseCard>().manaCost;
             manaText.text = currMana.ToString();
             sm.NewCard(card);

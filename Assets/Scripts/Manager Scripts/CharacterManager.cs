@@ -56,7 +56,6 @@ public class CharacterManager : MonoBehaviour
 
         healthText.text = ReplaceFirst(healthText.text.ToString(), oldH.ToString(), health.ToString());
         healthBar.value = health;
-        Debug.Log("Health bar.val = " + healthBar.value);
 
         shieldText.text = ReplaceFirst(shieldText.text.ToString(), oldS.ToString(), shield.ToString());
         shieldBar.value = shield;
