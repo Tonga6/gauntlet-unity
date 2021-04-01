@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -63,6 +64,16 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         }
         if (activated == cardEffects.Count)
             isExhausted = true;
+    }
+    public void MoveTo(RectTransform parent)
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        transform.DOMove(parent.position, 2);
+        rt.parent = parent;
+        rt.localScale = GameManager.Instance.cardScale;
+        Vector2 temp = rt.position;
+        //temp.y -= GameManager.Instance.sunkVar;
+        //rt.position = temp;
     }
     public void ResetCard()
     {

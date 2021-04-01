@@ -13,7 +13,6 @@ public class CardPile : MonoBehaviour
     public bool isDrawPile = false;
 
     public TextMeshProUGUI text;
-
     public void ShufflePile()
     {
         for (int i = 0; i < cards.Count; i++)

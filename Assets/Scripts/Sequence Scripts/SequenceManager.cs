@@ -18,7 +18,6 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void Awake()
     {
         ClearSequence();
-            //slots[0].gameObject.GetComponent<SequenceSlot>().enabled = true;
     }
     private void Update()
     {
@@ -112,9 +111,10 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         //set card inactive whil in card pile
         foreach (GameObject card in cards)
         {
-            PlayerManager.Instance.hm.RemoveFromHand(card);
+            //PlayerManager.Instance.hm.SendToDiscard(card);
+            card.GetComponent<BaseCard>().MoveTo(PlayerManager.Instance.discardPile.gameObject.GetComponent<RectTransform>());
+            PlayerManager.Instance.discardPile.Push(card);
             card.GetComponent<BaseCard>().ResetCard();
-           // PlayerManager.Instance.discardPile.Push(card);
         }
         cards.Clear();
     }

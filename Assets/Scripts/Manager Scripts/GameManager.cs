@@ -38,12 +38,18 @@ public class GameManager : MonoBehaviour, IDropHandler
 
     private void Awake()
     {
+        StartCoroutine(Initialise());
+    }
+    IEnumerator Initialise()
+    {
         if (Instance != null)
         {
             Destroy(this.gameObject);
-            return;
         }
-        Instance = this;
+        else
+        {
+            Instance = this;
+            yield return new WaitForSeconds(1);
         playerDrawPile.Populate(playerCards);
 
         enemyActionDrawPile.Populate(enemyActionCards);
@@ -51,6 +57,7 @@ public class GameManager : MonoBehaviour, IDropHandler
 
         playerSeq = GameObject.FindGameObjectWithTag("PlayerSequenceBoard").GetComponent<SequenceManager>();
         StartPhase();
+        }
     }
 
     public void NextPhase()

@@ -41,8 +41,6 @@ public class PlayerManager : CharacterManager
     {
         while (handSize < startHandSize)
         {
-            if (drawPile.IsEmpty())
-                RefillDrawPile();
             DrawCard();
         }
     }
@@ -50,27 +48,30 @@ public class PlayerManager : CharacterManager
     {
         while (hm.GetComponent<HandManager>().hand.Count > 0)
         {
-            hm.GetComponent<HandManager>().RemoveFromHand(null);
+            hm.GetComponent<HandManager>().SendToDiscard(null);
             handSize--;
         }
     }
     public void RefillDrawPile()
     {
-        
         while (!discardPile.IsEmpty())
         {
-            drawPile.Push(discardPile.Pop());
+            GameObject card = discardPile.Pop();
+            card.GetComponent<BaseCard>().MoveTo(drawPile.GetComponent<RectTransform>());
+            drawPile.Push(card);
         }
     }
     public void DrawCard()
     {
         if (drawPile.IsEmpty())
             RefillDrawPile();
+
         GameObject temp = drawPile.Pop();
+
         temp.SetActive(true);
         hm.AddToHand(temp);
-        
         handSize++;
+        
     }
     public bool PlayCard(GameObject card)
     {
@@ -78,10 +79,10 @@ public class PlayerManager : CharacterManager
         if (currMana >= card.GetComponent<BaseCard>().manaCost)
         {
             handSize--;
-            hm.hand.Remove(card);
             currMana -= card.GetComponent<BaseCard>().manaCost;
             manaText.text = currMana.ToString();
             sm.NewCard(card);
+            hm.RemoveFromHand(card);
             EnemyManager.Instance.EnemyReaction();
             return true;
         }
