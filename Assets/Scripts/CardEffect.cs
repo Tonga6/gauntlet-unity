@@ -6,7 +6,7 @@ public abstract class CardEffect : MonoBehaviour
 {
     public bool hasActivated;
 
-    public targetCharacter target;
+    public character target;
 
     public EffectCondition condition;
     private void Awake()

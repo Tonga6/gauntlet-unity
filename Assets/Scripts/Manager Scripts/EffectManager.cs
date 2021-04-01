@@ -26,28 +26,50 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void DealDamage(targetCharacter target, int damage)
+    public void DealDamage(character target, int damage)
     {
         camShake.Shake();
-        if (target == targetCharacter.ENEMY)
+        if (target == character.ENEMY)
         {
             EnemyManager.Instance.TakeDamage(damage);
         }
         else
             PlayerManager.Instance.TakeDamage(damage);
     }
-    public void GiveShield(targetCharacter target, int shield)
+    public void GiveShield(character target, int shield)
     {
-        if (target == targetCharacter.ENEMY)
+        if (target == character.ENEMY)
         {
             EnemyManager.Instance.GiveShield(shield);
         }
         else
             PlayerManager.Instance.GiveShield(shield);
     }
+    public void DrawCard(character target, int draw)
+    {
+        if(target == character.PLAYER)
+        {
+            for (int i = 0; i < draw; i++)
+            {
+                PlayerManager.Instance.DrawCard();
+            }
+        }
+    }
+    public void GainMana (character target, int mana)
+    {
+        if (target == character.PLAYER)
+        {
+            Debug.Log("Gain mana: EM");
+            PlayerManager.Instance.GainMana(mana);
+        }
+    }
+    public void InflictStatus()
+    {
+
+    }
 }
 
-public enum targetCharacter
+public enum character
 {
     PLAYER,
     ENEMY

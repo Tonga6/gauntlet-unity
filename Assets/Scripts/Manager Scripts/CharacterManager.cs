@@ -20,7 +20,7 @@ public class CharacterManager : MonoBehaviour
     public int shield;
 
     [Header("Hand Attributes")]
-    public int maxHandSize;
+    public int startHandSize;
     public int handSize;
 
     [Header("External References")]

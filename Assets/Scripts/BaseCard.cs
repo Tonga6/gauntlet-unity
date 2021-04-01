@@ -14,8 +14,9 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     public cardType cardType;
     public int damage;
     public int shield;
+    public int draw;
 	public bool isMoving;
-    public targetCharacter owner;
+    public character owner;
     public bool isExhausted;
 
     [Header("Card Visuals")]
@@ -42,6 +43,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         }
         description = description.Replace("X", damage.ToString());
         description = description.Replace("Y", shield.ToString());
+        description = description.Replace("Z", draw.ToString());
 
         descripText.text = description;
         descripText.fontSize = descripSize;
@@ -133,7 +135,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(owner == targetCharacter.PLAYER)
+        if(owner == character.PLAYER)
         {
 
             if (GameManager.Instance.canMag && GameManager.Instance.phase == turnPhase.PLAYER)
@@ -155,7 +157,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(owner == targetCharacter.PLAYER && isMag)
+        if(owner == character.PLAYER && isMag)
         {
             
             if (isMag)
@@ -179,6 +181,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 public enum cardType
 {
     Attack,
-    Defense
+    Defense,
+    Utility
 }
 

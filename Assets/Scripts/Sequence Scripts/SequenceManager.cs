@@ -38,14 +38,16 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         foreach(SequenceSlot slot in slots)
         {
             if (slot.card != null)
+            {
                 slot.card.GetComponent<BaseCard>().ActivateEffects();
+            }
         }
     }
     public bool AdjacencyCheck(GameObject card, List<cardType> typeCombo, int adjacency)
     {
-        
+        int adj = adjacency;
         int inc;
-        if (adjacency > 0)
+        if (adj > 0)
             inc = 1;            // Check ensuing cards
         else
             inc = -1;           // Check preceding cards
@@ -54,17 +56,17 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         int i = pivot + inc;
         
         //If card is reaction, use last played player card as pivot 
-        if (card.GetComponent<BaseCard>().owner == targetCharacter.ENEMY)
+        if (card.GetComponent<BaseCard>().owner == character.ENEMY)
             i = cards.Count - 1;
-        for (int j = 0; (i < cards.Count && i >= 0) && adjacency != 0;j++)
+        for (int j = 0; (i < cards.Count && i >= 0) && adj != 0;j++)
         {
             if (cards[i].GetComponent<BaseCard>().cardType != typeCombo[j])
                 return false;
 
             i += inc;
-            adjacency += -1 * inc;  //positive adj means i goes forward away from 0, adj goes backwards to 0. Vice versa
+            adj += -1 * inc;  //positive adj means i goes forward away from 0, adj goes backwards to 0. Vice versa
         }
-        if (adjacency == 0)
+        if (adj == 0)
             return true;
         
         return false;
@@ -73,8 +75,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void NewCard(GameObject card)
     {
         cards.Add(card);
-        slots[slots.Count - 1].card = card;
-
+        slots[cards.Count - 1].card = card;
         card.GetComponent<RectTransform>().parent = slots[cards.Count-1].GetComponent<RectTransform>();
         card.GetComponent<BaseCard>().isPlayed = true;
         card.transform.position = slots[cards.Count - 1].transform.position;
@@ -90,7 +91,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
 
         //Only activate on play if is player card
-        if(card.GetComponent<BaseCard>().owner == targetCharacter.PLAYER)
+        if(card.GetComponent<BaseCard>().owner == character.PLAYER)
             ActivateCards();
     }
 

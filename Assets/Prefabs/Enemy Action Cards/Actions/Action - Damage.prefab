@@ -173,6 +173,8 @@ MonoBehaviour:
   hasActivated: 0
   target: 0
   condition: {fileID: 7077862469882256781}
+  minDamage: 14
+  maxDamage: 17
   damage: 15
 --- !u!114 &7077862469882256781
 MonoBehaviour:

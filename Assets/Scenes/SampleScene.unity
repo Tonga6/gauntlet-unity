@@ -2935,11 +2935,11 @@ MonoBehaviour:
   shieldText: {fileID: 1248843124}
   healthBar: {fileID: 79530092}
   shieldBar: {fileID: 1299112530}
-  maxHealth: 70
-  health: 70
-  maxShield: 30
+  maxHealth: 45
+  health: 45
+  maxShield: 22
   shield: 0
-  maxHandSize: 5
+  startHandSize: 5
   handSize: 0
   sm: {fileID: 513396373}
   manaText: {fileID: 1494151059}
@@ -3014,15 +3014,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCards:
+  - {fileID: 7660709128053673717, guid: e567fc0f463338245967acb0fd6c1928, type: 3}
   - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
   - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
   - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
   - {fileID: 6825173427667288365, guid: c9100f32d0355874b9cea544ea0221fb, type: 3}
-  - {fileID: 6825173427667288365, guid: a9efa7cd0c9a8254094084a08f8db610, type: 3}
+  - {fileID: 7660709128053673717, guid: 24f128d6a32251143b6ee0b627f35364, type: 3}
+  - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
+  - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
   - {fileID: 6825173427667288365, guid: 0e13785b32db1654786d1c881f7a9169, type: 3}
-  - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
-  - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
-  - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
   - {fileID: 6825173427667288365, guid: 935a854338ad993449921d495036bea7, type: 3}
   playerDrawPile: {fileID: 56747362}
   enemyActionCards:
@@ -3427,7 +3427,7 @@ MonoBehaviour:
   health: 180
   maxShield: 20
   shield: 0
-  maxHandSize: 0
+  startHandSize: 0
   handSize: 0
   sm: {fileID: 472347735}
   actionPile: {fileID: 633958799}

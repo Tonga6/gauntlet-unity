@@ -39,7 +39,7 @@ public class PlayerManager : CharacterManager
     }
     public void RefillHand()
     {
-        while (handSize < maxHandSize)
+        while (handSize < startHandSize)
         {
             if (drawPile.IsEmpty())
                 RefillDrawPile();
@@ -53,17 +53,19 @@ public class PlayerManager : CharacterManager
             hm.GetComponent<HandManager>().RemoveFromHand(null);
             handSize--;
         }
-        Debug.Log(handSize);
     }
     public void RefillDrawPile()
     {
-            while (!discardPile.IsEmpty())
-            {
-                drawPile.Push(discardPile.Pop());
-            }
+        
+        while (!discardPile.IsEmpty())
+        {
+            drawPile.Push(discardPile.Pop());
+        }
     }
     public void DrawCard()
     {
+        if (drawPile.IsEmpty())
+            RefillDrawPile();
         GameObject temp = drawPile.Pop();
         temp.SetActive(true);
         hm.AddToHand(temp);
@@ -94,6 +96,13 @@ public class PlayerManager : CharacterManager
     public void ClearBoard()
     {
         sm.ClearSequence();
+    }
+
+    public void GainMana(int manaGain)
+    {
+        Debug.Log("Gain mana");
+        currMana += manaGain;
+        manaText.text = currMana.ToString();
     }
 }
 

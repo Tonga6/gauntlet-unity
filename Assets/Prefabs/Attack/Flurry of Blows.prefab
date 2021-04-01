@@ -30,6 +30,8 @@ MonoBehaviour:
   hasActivated: 0
   target: 1
   condition: {fileID: 6399901275295956043}
+  minDamage: 15
+  maxDamage: 15
   damage: 15
 --- !u!1001 &4622163181455702866
 PrefabInstance:
