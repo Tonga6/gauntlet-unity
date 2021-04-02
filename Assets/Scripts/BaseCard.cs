@@ -23,6 +23,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     [Header("Card Visuals")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descripText;
+    public TextMeshProUGUI manaText;
     public Sprite artwork;
     public CanvasGroup cs;
     public int nameSize;
@@ -48,6 +49,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
         descripText.text = description;
         descripText.fontSize = descripSize;
+
+        manaText.text = manaCost.ToString();
     }
 
     public void ActivateEffects()

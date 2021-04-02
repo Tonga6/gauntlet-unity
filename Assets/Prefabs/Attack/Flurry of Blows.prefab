@@ -30,8 +30,6 @@ MonoBehaviour:
   hasActivated: 0
   target: 1
   condition: {fileID: 6399901275295956043}
-  minDamage: 15
-  maxDamage: 15
   damage: 15
 --- !u!1001 &4622163181455702866
 PrefabInstance:
@@ -92,6 +90,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2341998675873895661, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4110357955907714234, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -103,6 +105,18 @@ PrefabInstance:
     - target: {fileID: 4110357955907714234, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266126785875273299, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266126785875273299, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266126785875273299, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6117647
       objectReference: {fileID: 0}
     - target: {fileID: 6873179372321630651, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Pivot.x
@@ -200,33 +214,65 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6132076
       objectReference: {fileID: 0}
+    - target: {fileID: 7117356250573827146, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 35.535034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652751145461997583, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_text
+      value: Flurry Of Blows
       objectReference: {fileID: 0}
     - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_fontSize
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_margin.x
+      value: -0.26416016
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_fontSizeBase
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchorMax.x
