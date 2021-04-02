@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     public List<SequenceSlot> slots = new List<SequenceSlot>();
@@ -111,10 +112,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         //set card inactive whil in card pile
         foreach (GameObject card in cards)
         {
-            //PlayerManager.Instance.hm.SendToDiscard(card);
-            card.GetComponent<BaseCard>().MoveTo(PlayerManager.Instance.discardPile.gameObject.GetComponent<RectTransform>());
             PlayerManager.Instance.discardPile.Push(card);
-            card.GetComponent<BaseCard>().ResetCard();
         }
         cards.Clear();
     }
@@ -141,7 +139,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             isHovering = false;
             Vector2 temp = transform.position;
             temp.y += GameManager.Instance.seqAdjustVar;
-            transform.position = temp;
+            transform.DOMove(temp, .3f);
         }
     }
     #endregion
@@ -156,10 +154,10 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 shouldExpand = false;
                 Vector2 temp = transform.position;
                 temp.y -= GameManager.Instance.seqAdjustVar;
-                transform.position = temp;
+                transform.DOMove(temp, .3f);
             }
 
-        
+
     }
     #endregion
 }

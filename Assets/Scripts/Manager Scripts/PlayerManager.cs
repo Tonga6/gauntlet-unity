@@ -86,6 +86,7 @@ public class PlayerManager : CharacterManager
             EnemyManager.Instance.EnemyReaction();
             return true;
         }
+        card.GetComponent<BaseCard>().ResetPos();
         return false;
     }
     public void StartPhase()
@@ -101,7 +102,6 @@ public class PlayerManager : CharacterManager
 
     public void GainMana(int manaGain)
     {
-        Debug.Log("Gain mana");
         currMana += manaGain;
         manaText.text = currMana.ToString();
     }

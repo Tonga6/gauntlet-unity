@@ -11,8 +11,16 @@ public class CardPile : MonoBehaviour
     [SerializeField]
     public List<GameObject> cards = new List<GameObject>();
     public bool isDrawPile = false;
+    public float wait;
+    public float timer;
+    public bool waiting;
 
     public TextMeshProUGUI text;
+    private void Update()
+    {
+        if (waiting)
+            timer -= Time.deltaTime;
+    }
     public void ShufflePile()
     {
         for (int i = 0; i < cards.Count; i++)
@@ -29,7 +37,7 @@ public class CardPile : MonoBehaviour
         {
             GameObject temp = cards[0];
             cards.RemoveAt(0);
-
+            temp.GetComponent<BaseCard>().ResetCard();
             temp.SetActive(true);
             UpdateCount();
             return temp;
@@ -41,8 +49,8 @@ public class CardPile : MonoBehaviour
     {
         cards.Add(card);
         card.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
-        card.GetComponent<BaseCard>().ResetCard();
-        card.SetActive(false);
+        card.GetComponent<BaseCard>().MoveTo(GetComponent<RectTransform>());
+            
         UpdateCount();
     }
 

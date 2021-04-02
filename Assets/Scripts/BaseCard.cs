@@ -32,9 +32,10 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     public bool isPlayed = false;
 
     public List<CardEffect> cardEffects = new List<CardEffect>();
-
-    public Vector2 startPos;
+    float yPos;
+    public Vector3 startPos;
     bool isMag = false;
+    public Sequence seq;
     
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void ActivateEffects()
     {
+        seq = DOTween.Sequence();
         int activated = 0;
         foreach (CardEffect effect in cardEffects)
         {
@@ -70,13 +72,12 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     }
     public void MoveTo(RectTransform parent)
     {
+        canvas.overrideSorting = true;
         RectTransform rt = GetComponent<RectTransform>();
-        transform.DOMove(parent.position, 2);
+        seq.Append(transform.DOMove(parent.position, 1));
         rt.parent = parent;
         rt.localScale = GameManager.Instance.cardScale;
-        Vector2 temp = rt.position;
-        //temp.y -= GameManager.Instance.sunkVar;
-        //rt.position = temp;
+        startPos = rt.parent.position;
     }
     public void ResetCard()
     {
@@ -91,7 +92,8 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
 
     public void ResetPos()
     {
-        transform.position = startPos;
+        Debug.Log("Reset to " + startPos);
+        transform.DOMove(startPos, 0.3f);
     }
 
     #region IBeginDragHandler
@@ -100,14 +102,11 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         //If is player turn and card is in hand
         if (GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
         {
-            startPos = this.transform.position;
-            startPos.y -= GameManager.Instance.adjustVar;
+            cs.blocksRaycasts = false;
             this.transform.localScale = GameManager.Instance.cardScale;
             GameManager.Instance.canMag = false;
             isMoving = true;
-            cs.blocksRaycasts = false;
             canvas.overrideSorting = true;
-
 
         }
     }
@@ -133,35 +132,38 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         canvas.overrideSorting = false;
         if (GameManager.Instance.phase == turnPhase.PLAYER && !isPlayed)
         {
-            if (isMoving)
-            {
-
                 isMoving = false;
                 cs.blocksRaycasts = true;
                 if (!isPlayed)
                     ResetPos();
-            }
+            GameManager.Instance.canMag = true;
         }
-        GameManager.Instance.canMag = true;
     }
     #endregion
 
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(owner == character.PLAYER)
+        if(transform.position == startPos && GameManager.Instance.canMag)
         {
 
-            if (GameManager.Instance.canMag && GameManager.Instance.phase == turnPhase.PLAYER)
-            {
-                isMag = true;
-                this.transform.localScale = GameManager.Instance.magScale;
+            yPos = transform.position.y;
 
-                canvas.overrideSorting = true;
-                if (!isPlayed){
-                    Vector2 temp = transform.position;
-                    temp.y += GameManager.Instance.adjustVar;
-                    transform.position = temp;
+            if (owner == character.PLAYER)
+            {
+
+                if (GameManager.Instance.phase == turnPhase.PLAYER)
+                {
+                    if (!isPlayed)
+                    {
+                        Vector2 temp = transform.position;
+                        temp.y = yPos + GameManager.Instance.adjustVar;
+                        transform.DOMove(temp, 0.3f);
+                    }
+                    //seq.Append(transform.DOScale(GameManager.Instance.magScale, 0.4f));
+                    //this.transform.localScale = GameManager.Instance.magScale;
+
+                    canvas.overrideSorting = true;
                 }
             }
         }
@@ -171,22 +173,16 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerExit
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(owner == character.PLAYER && isMag)
+        if(owner == character.PLAYER && !isMoving)
         {
-            
-            if (isMag)
-            {
-                isMag = false;
-                canvas.overrideSorting = false;
-                this.transform.localScale = GameManager.Instance.cardScale;
-                if (!isPlayed)
+                if (!isPlayed && transform.position != startPos)
                 {
-                    Vector2 temp = transform.position;
-                    temp.y -= GameManager.Instance.adjustVar;
-                    transform.position = temp;
+                    transform.DOMove(startPos, 0.3f);
                 }
-        
-            }
+                canvas.overrideSorting = false;
+            //seq.Pause();
+            //    seq.Append(transform.DOScale(GameManager.Instance.cardScale, 0.1f));
+            
         }
     }
     #endregion

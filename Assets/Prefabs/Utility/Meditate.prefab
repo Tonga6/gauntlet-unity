@@ -14,8 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasActivated: 0
   target: 0
-  condition: {fileID: 0}
+  condition: {fileID: 7024625786205902197}
   mana: 1
+--- !u!114 &7024625786205902197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825173427667288365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580cea2207f583d409a0e8a0a1db77d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sm: {fileID: 0}
+  adjacency: 1
+  typeCombo: 01000000
 --- !u!1001 &4622163181455702866
 PrefabInstance:
   m_ObjectHideFlags: 0
