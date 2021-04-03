@@ -14,11 +14,12 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public float hoverTime;
     public bool isHovering = false;
     public bool shouldExpand;
-
+    Vector3 startPos;
 
     private void Awake()
     {
         ClearSequence();
+        startPos = transform.position;
     }
     private void Update()
     {
@@ -76,6 +77,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         cards.Add(card);
         slots[cards.Count - 1].card = card;
+        //card.GetComponent<BaseCard>().MoveTo(slots[cards.Count - 1].GetComponent<RectTransform>(), 0.3f);
         card.GetComponent<RectTransform>().parent = slots[cards.Count-1].GetComponent<RectTransform>();
         card.GetComponent<BaseCard>().isPlayed = true;
         card.transform.position = slots[cards.Count - 1].transform.position;
@@ -138,7 +140,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             isHovering = false;
             Vector2 temp = transform.position;
-            temp.y += GameManager.Instance.seqAdjustVar;
+            temp.y = startPos.y + GameManager.Instance.seqAdjustVar;
             transform.DOMove(temp, .3f);
         }
     }
@@ -151,10 +153,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             hoverTime = 0;
             if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
             {
-                shouldExpand = false;
-                Vector2 temp = transform.position;
-                temp.y -= GameManager.Instance.seqAdjustVar;
-                transform.DOMove(temp, .3f);
+                transform.DOMove(startPos, .3f);
             }
 
 

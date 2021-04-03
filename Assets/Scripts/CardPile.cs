@@ -49,7 +49,7 @@ public class CardPile : MonoBehaviour
     {
         cards.Add(card);
         card.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
-        card.GetComponent<BaseCard>().MoveTo(GetComponent<RectTransform>());
+        card.GetComponent<BaseCard>().MoveTo(GetComponent<RectTransform>(), 0.6f);
             
         UpdateCount();
     }

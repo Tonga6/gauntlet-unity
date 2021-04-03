@@ -57,7 +57,7 @@ public class PlayerManager : CharacterManager
         while (!discardPile.IsEmpty())
         {
             GameObject card = discardPile.Pop();
-            card.GetComponent<BaseCard>().MoveTo(drawPile.GetComponent<RectTransform>());
+            card.GetComponent<BaseCard>().MoveTo(drawPile.GetComponent<RectTransform>(),0.6f);
             drawPile.Push(card);
         }
     }

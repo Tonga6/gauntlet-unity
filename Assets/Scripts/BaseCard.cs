@@ -70,11 +70,11 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
         if (activated == cardEffects.Count)
             isExhausted = true;
     }
-    public void MoveTo(RectTransform parent)
+    public void MoveTo(RectTransform parent, float speed)
     {
         canvas.overrideSorting = true;
         RectTransform rt = GetComponent<RectTransform>();
-        seq.Append(transform.DOMove(parent.position, 1));
+        seq.Append(transform.DOMove(parent.position, speed));
         rt.parent = parent;
         rt.localScale = GameManager.Instance.cardScale;
         startPos = rt.parent.position;

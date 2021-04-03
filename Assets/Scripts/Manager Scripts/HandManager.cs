@@ -37,7 +37,7 @@ public class HandManager : MonoBehaviour
                 break;
             }
         }
-        card.GetComponent<BaseCard>().MoveTo(containers[i].GetComponent<RectTransform>());
+        card.GetComponent<BaseCard>().MoveTo(containers[i].GetComponent<RectTransform>(), 0.6f);
         
 
     }
