@@ -49,8 +49,11 @@ public class CardPile : MonoBehaviour
     {
         cards.Add(card);
         card.GetComponent<RectTransform>().parent = GetComponent<RectTransform>();
-        card.GetComponent<BaseCard>().MoveTo(GetComponent<RectTransform>(), 0.6f);
-            
+        if (card.GetComponent<BaseCard>().owner == character.PLAYER)
+            card.GetComponent<BaseCard>().MoveTo(GetComponent<RectTransform>(), 0.6f);
+        else
+            card.GetComponent<RectTransform>().transform.position = GetComponent<RectTransform>().transform.position;
+
         UpdateCount();
     }
 

@@ -19,7 +19,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void Awake()
     {
         ClearSequence();
-        startPos = transform.position;
+        
     }
     private void Update()
     {
@@ -28,7 +28,8 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             hoverTime += Time.deltaTime;
             if (hoverTime >= timer)
             {
-                shouldExpand= true;
+                startPos = transform.position;
+                shouldExpand = true;
                 OnPointerEnter(null);
             }
         }
