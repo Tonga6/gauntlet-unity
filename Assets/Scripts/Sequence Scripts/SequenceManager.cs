@@ -31,6 +31,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 startPos = transform.position;
                 shouldExpand = true;
                 OnPointerEnter(null);
+                hoverTime = 0;
             }
         }
 
@@ -155,7 +156,8 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
             {
                 transform.DOMove(startPos, .3f);
-            }
+                shouldExpand = false;
+        }
 
 
     }

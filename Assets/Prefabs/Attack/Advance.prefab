@@ -1,6 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6399901275295956043
+--- !u!114 &2529725259404533971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825173427667288365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f222616333ae06e4eafa82d456e3d74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasActivated: 0
+  target: 0
+  condition: {fileID: 5928188267721675836}
+  shield: 5
+--- !u!114 &5928188267721675836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,7 +30,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sm: {fileID: 0}
   adjacency: -2
-  typeCombo: 0000000000000000
+  typeCombo: 0100000000000000
 --- !u!114 &7616851521381155702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasActivated: 0
   target: 1
-  condition: {fileID: 6399901275295956043}
-  damage: 15
+  condition: {fileID: 5928188267721675836}
+  damage: 5
 --- !u!1001 &4622163181455702866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56,11 +72,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: name
-      value: Flurry Of Blows
+      value: Advance
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: damage
-      value: 15
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: shield
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardType
@@ -76,23 +96,27 @@ PrefabInstance:
       objectReference: {fileID: 3494233404762112929}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: description
-      value: '<- 2R: Deal X damage'
+      value: '<- 1R 1B: Deal X damage. Block Y.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: cardEffects.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: cardEffects.Array.data[0]
       value: 
       objectReference: {fileID: 7616851521381155702}
+    - target: {fileID: 1814104785012227230, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
+      propertyPath: cardEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2529725259404533971}
     - target: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Name
-      value: Flurry of Blows
+      value: Advance
       objectReference: {fileID: 0}
     - target: {fileID: 2203065054558239359, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341998675873895661, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4110357955907714234, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Color.b
@@ -117,10 +141,6 @@ PrefabInstance:
     - target: {fileID: 6266126785875273299, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Color.r
       value: 0.6117647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6368660983602995321, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6873179372321630651, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Pivot.x
@@ -218,14 +238,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6132076
       objectReference: {fileID: 0}
-    - target: {fileID: 7117356250573827146, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -236,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 35.535034
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7592792496541919881, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -246,37 +258,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7652751145461997583, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_text
-      value: Flurry Of Blows
-      objectReference: {fileID: 0}
     - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_fontSize
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_margin.x
-      value: -0.26416016
-      objectReference: {fileID: 0}
-    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_fontSizeBase
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8096128699300591859, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686340513024506736, guid: 7a0e6257e323dd04b978320b018e0fa1, type: 3}
       propertyPath: m_AnchorMax.x

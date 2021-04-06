@@ -65,6 +65,8 @@ public class CharacterManager : MonoBehaviour
     {
         int oldS = shield;
         this.shield += bonus;
+        if (shield > maxShield)
+            shield = maxShield;
         shieldText.text = ReplaceFirst(shieldText.text.ToString(), oldS.ToString(), shield.ToString());
         shieldBar.value = shield;
     }

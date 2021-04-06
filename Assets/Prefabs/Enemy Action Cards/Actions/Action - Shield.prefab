@@ -202,12 +202,14 @@ MonoBehaviour:
   description: Y
   cardType: 1
   damage: 0
-  shield: 20
+  shield: 8
+  draw: 0
   isMoving: 0
   owner: 1
   isExhausted: 0
   nameText: {fileID: 0}
   descripText: {fileID: 6383929851287349594}
+  manaText: {fileID: 0}
   artwork: {fileID: 0}
   cs: {fileID: 7077862469882256786}
   nameSize: 30
@@ -216,7 +218,7 @@ MonoBehaviour:
   isPlayed: 0
   cardEffects:
   - {fileID: 3748559991343562496}
-  startPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &7077862469882256781
 MonoBehaviour:
   m_ObjectHideFlags: 0

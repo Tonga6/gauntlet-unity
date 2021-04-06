@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour, IDropHandler
     public turnPhase phase;
     public int turnCount = 0;
     public TextMeshProUGUI buttonText;
-
+    public TextMeshProUGUI bannerText;
+    public GameObject banner;
     private void Awake()
     {
         StartCoroutine(Initialise());
@@ -60,15 +61,25 @@ public class GameManager : MonoBehaviour, IDropHandler
         }
     }
 
-    public void NextPhase()
+    public IEnumerator NextPhase()
     {
         if (phase == turnPhase.END)
             phase = turnPhase.START;
 
         else
             phase++;
+        if(phase == turnPhase.ENEMY || phase == turnPhase.PLAYER)
+        {
+        yield return new WaitForSeconds(2);
 
-        buttonText.text = phase.ToString() + " Phase";
+        bannerText.text = phase.ToString() + " PHASE";
+        buttonText.text = phase.ToString() + " PHASE";
+        banner.SetActive(true);
+        yield return new WaitForSeconds(2);
+        banner.SetActive(false);
+        }
+        
+
         switch (phase) // use upcast, where 0 - first, 1 - second...
         {
             case (turnPhase.START):
@@ -79,6 +90,7 @@ public class GameManager : MonoBehaviour, IDropHandler
                 
                 break;
             case (turnPhase.PLAYER):
+                PlayerPhase();
                 break;
             case (turnPhase.END):
                 EndPhase();
@@ -91,20 +103,23 @@ public class GameManager : MonoBehaviour, IDropHandler
     void StartPhase()
     {
         turnCount++;
-        PlayerManager.Instance.StartPhase();
         if(EnemyManager.Instance != null)
-            NextPhase();
+            StartCoroutine(NextPhase());
     }
     void EnemyPhase()
     {
         EnemyManager.Instance.EnemyPhase();
-        NextPhase();
+        StartCoroutine(NextPhase());
     }
-    void EndPhase()
+    void PlayerPhase()
+    {
+        PlayerManager.Instance.StartPhase();
+    }
+    public void EndPhase()
     {
         PlayerManager.Instance.ClearBoard();
         PlayerManager.Instance.ClearHand();
-        NextPhase();
+        StartCoroutine(NextPhase());
     }
 
     #region IBeginDropHandler implementation

@@ -144,11 +144,13 @@ MonoBehaviour:
   cardType: 0
   damage: 15
   shield: 0
+  draw: 0
   isMoving: 0
   owner: 1
   isExhausted: 0
   nameText: {fileID: 8998271970960717598}
   descripText: {fileID: 8998271970960717598}
+  manaText: {fileID: 0}
   artwork: {fileID: 0}
   cs: {fileID: 7077862469882256786}
   nameSize: 30
@@ -157,7 +159,7 @@ MonoBehaviour:
   isPlayed: 0
   cardEffects:
   - {fileID: 7077862469882256782}
-  startPos: {x: 0, y: 0}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &7077862469882256782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +175,6 @@ MonoBehaviour:
   hasActivated: 0
   target: 0
   condition: {fileID: 7077862469882256781}
-  minDamage: 14
-  maxDamage: 17
   damage: 15
 --- !u!114 &7077862469882256781
 MonoBehaviour:
