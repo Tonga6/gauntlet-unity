@@ -44,14 +44,16 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
             nameText.text = name;
             nameText.fontSize = nameSize;
         }
-        description = description.Replace("X", damage.ToString());
-        description = description.Replace("Y", shield.ToString());
-        description = description.Replace("Z", draw.ToString());
+        if(description != null){ 
+            description = description.Replace("X", damage.ToString());
+            description = description.Replace("Y", shield.ToString());
+            description = description.Replace("Z", draw.ToString());
 
-        descripText.text = description;
-        descripText.fontSize = descripSize;
-
-        manaText.text = manaCost.ToString();
+            descripText.text = description;
+            descripText.fontSize = descripSize;
+        }
+        if(manaText != null && manaCost != null)
+            manaText.text = manaCost.ToString();
     }
 
     public void ActivateEffects()
@@ -145,24 +147,18 @@ public class BaseCard : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDrag
     #region OnPointerEnter
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(transform.position == startPos && GameManager.Instance.canMag)
+        if (GameManager.Instance.canMag)
         {
-
-            yPos = transform.position.y;
-
             if (owner == character.PLAYER)
             {
-
                 if (GameManager.Instance.phase == turnPhase.PLAYER)
                 {
                     if (!isPlayed)
                     {
-                        Vector2 temp = transform.position;
-                        temp.y = yPos + GameManager.Instance.adjustVar;
+                        Vector3 temp = startPos;
+                        temp.y = startPos.y + GameManager.Instance.adjustVar;
                         transform.DOMove(temp, 0.3f);
                     }
-                    //seq.Append(transform.DOScale(GameManager.Instance.magScale, 0.4f));
-                    //this.transform.localScale = GameManager.Instance.magScale;
 
                     canvas.overrideSorting = true;
                 }

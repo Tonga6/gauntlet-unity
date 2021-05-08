@@ -22,6 +22,8 @@ public class PlayerManager : CharacterManager
 
     public HandManager hm;
 
+    public GameObject button;
+
     
     List<GameObject> playerHand;
 
@@ -32,6 +34,12 @@ public class PlayerManager : CharacterManager
             Instance = this;
             Initialise();
             currMana = maxMana;
+
+            Color temp = button.GetComponent<Image>().color;
+            temp.a = 0.5f;
+            button.GetComponent<Image>().color = temp;
+
+            button.GetComponent<Button>().interactable = false;
         }
         else
             Destroy(this);
@@ -39,9 +47,10 @@ public class PlayerManager : CharacterManager
     }
     public void RefillHand()
     {
-        while (handSize < startHandSize)
+        bool temp = true;
+        while (handSize < startHandSize && temp == true)
         {
-            DrawCard();
+            temp = DrawCard();
         }
     }
     public void ClearHand()
@@ -61,17 +70,20 @@ public class PlayerManager : CharacterManager
             drawPile.Push(card);
         }
     }
-    public void DrawCard()
+    public bool DrawCard()
     {
         if (drawPile.IsEmpty())
             RefillDrawPile();
 
         GameObject temp = drawPile.Pop();
-
-        temp.SetActive(true);
-        hm.AddToHand(temp);
-        handSize++;
-        
+        if(temp != null)
+        {
+            temp.SetActive(true);
+            hm.AddToHand(temp);
+            handSize++;
+            return true;
+        }
+        return false;
     }
     public bool PlayCard(GameObject card)
     {
@@ -94,12 +106,29 @@ public class PlayerManager : CharacterManager
         currMana = maxMana;
         manaText.text = currMana.ToString();
         RefillHand();
+
+        //activate button
+        Color temp = button.GetComponent<Image>().color;
+        temp.a = 1f;
+        button.GetComponent<Image>().color = temp;
+
+        button.GetComponent<Button>().interactable = true;
+
+    }
+    public void EndPhase()
+    {
+        Color temp = button.GetComponent<Image>().color;
+        temp.a = 0.5f;
+        button.GetComponent<Image>().color = temp;
+
+        button.GetComponent<Button>().interactable = false;
+
+        StartCoroutine(GameManager.Instance.NextPhase());
     }
     public void ClearBoard()
     {
         sm.ClearSequence();
     }
-
     public void GainMana(int manaGain)
     {
         currMana += manaGain;

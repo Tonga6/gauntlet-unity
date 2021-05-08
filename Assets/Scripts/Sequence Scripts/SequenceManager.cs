@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
-public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
+public class SequenceManager : MonoBehaviour, IDropHandler
 {
     public List<SequenceSlot> slots = new List<SequenceSlot>();
     public List<GameObject> cards = new List<GameObject>();
@@ -30,7 +30,7 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
             {
                 startPos = transform.position;
                 shouldExpand = true;
-                OnPointerEnter(null);
+                //OnPointerEnter(null);
                 hoverTime = 0;
             }
         }
@@ -134,32 +134,32 @@ public class SequenceManager : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     #endregion
 
-    #region OnPointerEnter
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isHovering = true;
-        if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
-        {
-            isHovering = false;
-            Vector2 temp = transform.position;
-            temp.y = startPos.y + GameManager.Instance.seqAdjustVar;
-            transform.DOMove(temp, .3f);
-        }
-    }
-    #endregion
+    //#region OnPointerEnter
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    isHovering = true;
+    //    if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
+    //    {
+    //        isHovering = false;
+    //        Vector3 temp = startPos;
+    //        temp.y = startPos.y + GameManager.Instance.seqAdjustVar;
+    //        transform.DOMove(temp, .3f);
+    //    }
+    //}
+    //#endregion
 
-    #region OnPointerExit
-    public void OnPointerExit(PointerEventData eventData)
-    {
-            isHovering = false;
-            hoverTime = 0;
-            if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
-            {
-                transform.DOMove(startPos, .3f);
-                shouldExpand = false;
-        }
+    //#region OnPointerExit
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //        isHovering = false;
+    //        hoverTime = 0;
+    //        if (this.CompareTag("PlayerSequenceBoard") && shouldExpand)
+    //        {
+    //            transform.DOMove(startPos, .3f);
+    //            shouldExpand = false;
+    //    }
 
 
-    }
-    #endregion
+    //}
+    //#endregion
 }

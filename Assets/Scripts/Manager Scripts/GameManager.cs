@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour, IDropHandler
     public CardPile enemyReactionDrawPile;
 
     [Header("Card Attributes")]
-    public bool canMag;
+    public bool canMag = true;
     public int adjustVar;
     public int sunkVar;
     public Vector3 magScale;
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour, IDropHandler
         yield return new WaitForSeconds(2);
 
         bannerText.text = phase.ToString() + " PHASE";
-        buttonText.text = phase.ToString() + " PHASE";
         banner.SetActive(true);
         yield return new WaitForSeconds(2);
         banner.SetActive(false);
